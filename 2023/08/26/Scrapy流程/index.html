@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        Scrapy框架爬虫流程 | Space | sinG
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/life">LIFE</a>
+            
+              <a class="nav-menu-item" href="/math">MATH</a>
+            
+              <a class="nav-menu-item" href="/cs">CS</a>
+            
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner--toc">
+      <div class="post-content__head">
+        <div class="post-title">Scrapy框架爬虫流程</div>
+        <div class="post-info">
+          
+  <a href="/tags/python/" class="post-tag">#python</a>
+
+
+          <span class="post-date">2023-08-26</span>
+        </div>
+      </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <p>参考自</p>
+<p>https://blog.csdn.net/ck784101777/article/details/104468780</p>
+<p>https://blog.csdn.net/ck784101777/article/details/104291634</p>
+<ol type="1">
+<li>创建项目</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">scrapy startproject TXmovies<br>cd TXmovies<br>scrapy genspider txms v.qq.com<br></code></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>修改setting</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python">ROBOTSTXT_OBEY = <span class="hljs-literal">False</span>	<span class="hljs-comment">#不遵循机器人协议</span><br> <br>DOWNLOAD_DELAY = <span class="hljs-number">1</span>	<span class="hljs-comment">#下载间隙</span><br> <br>DEFAULT_REQUEST_HEADERS = &#123;	<span class="hljs-comment">#请求头</span><br>  <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;</span>,<br>  <span class="hljs-string">&#x27;Accept-Language&#x27;</span>: <span class="hljs-string">&#x27;en&#x27;</span>,<br>  <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36&#x27;</span><br>&#125;<br> <br>ITEM_PIPELINES = &#123; 	<span class="hljs-comment">#打开一个管道，值越高优先级越高</span><br>   <span class="hljs-string">&#x27;TXmovies.pipelines.TxmoviesPipeline&#x27;</span>: <span class="hljs-number">300</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>确认要提取的数据，item项</li>
+</ol>
+<p>item定义你要提取的内容（定义数据结构），比如我提取的内容为电影名和电影描述，我就创建两个变量。Field方法实际上的做法是创建一个字典，给字典添加一个建，暂时不赋值，等待提取数据后再赋值。下面item的结构可以表示为：{'name':'','descripition':''}。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br> <br><span class="hljs-comment"># Define here the models for your scraped items</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># See documentation in:</span><br><span class="hljs-comment"># https://docs.scrapy.org/en/latest/topics/items.html</span><br> <br><span class="hljs-keyword">import</span> scrapy<br> <br> <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TxmoviesItem</span>(scrapy.Item):<br>    <span class="hljs-comment"># define the fields for your item here like:</span><br>    <span class="hljs-comment"># name = scrapy.Field()</span><br>    name = scrapy.Field()<br>    description = scrapy.Field()<br></code></pre></td></tr></table></figure></p>
+<ol start="4" type="1">
+<li>写爬虫程序</li>
+</ol>
+<p>在<code>txms.py</code>中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> ..items <span class="hljs-keyword">import</span> TxmoviesItem<br> <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TxmsSpider</span>(scrapy.Spider):<br>    name = <span class="hljs-string">&#x27;txms&#x27;</span><br>    allowed_domains = [<span class="hljs-string">&#x27;v.qq.com&#x27;</span>]<br>    start_urls = [<span class="hljs-string">&#x27;https://v.qq.com/x/bu/pagesheet/list?append=1&amp;channel=cartoon&amp;iarea=1&amp;listpage=2&amp;offset=0&amp;pagesize=30&#x27;</span>]<br>    offset=<span class="hljs-number">0</span><br> <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">parse</span>(<span class="hljs-params">self, response</span>):<br>        items=TxmoviesItem()<br>        lists=response.xpath(<span class="hljs-string">&#x27;//div[@class=&quot;list_item&quot;]&#x27;</span>)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lists:<br>            items[<span class="hljs-string">&#x27;name&#x27;</span>]=i.xpath(<span class="hljs-string">&#x27;./a/@title&#x27;</span>).get()<br>            items[<span class="hljs-string">&#x27;description&#x27;</span>]=i.xpath(<span class="hljs-string">&#x27;./div/div/@title&#x27;</span>).get()<br> <br>            <span class="hljs-keyword">yield</span> items<br> <br>        <span class="hljs-keyword">if</span> self.offset &lt; <span class="hljs-number">120</span>:<br>            self.offset += <span class="hljs-number">30</span><br>            url = <span class="hljs-string">&#x27;https://v.qq.com/x/bu/pagesheet/list?append=1&amp;channel=cartoon&amp;iarea=1&amp;listpage=2&amp;offset=&#123;&#125;&amp;pagesize=30&#x27;</span>.<span class="hljs-built_in">format</span>(<br>                <span class="hljs-built_in">str</span>(self.offset))<br> <br>            <span class="hljs-keyword">yield</span> scrapy.Request(url=url,callback=self.parse)<br></code></pre></td></tr></table></figure>
+<p>在<code>pipelines.py</code>中，</p>
+<p>交给管道输出，管道可以处理提取的数据，如存数据库，这里仅输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br> <br><span class="hljs-comment"># Define your item pipelines here</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Don&#x27;t forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="hljs-comment"># See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html</span><br> <br> <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TxmoviesPipeline</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">process_item</span>(<span class="hljs-params">self, item, spider</span>):<br>        <span class="hljs-built_in">print</span>(item)<br>        <span class="hljs-keyword">return</span> item<br></code></pre></td></tr></table></figure>
+<p><code>init.py</code>中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> cmdline<br> <br>cmdline.execute(<span class="hljs-string">&#x27;scrapy crawl txms&#x27;</span>.split())<br><br><span class="hljs-comment">#导出为csv或者json格式如下</span><br><br>cmdline.execute(<span class="hljs-string">&#x27;scrapy crawl baidu -o baidu.csv&#x27;</span>.split())<br><br>cmdline.execute(<span class="hljs-string">&#x27;scrapy crawl baidu -o baidu.json&#x27;</span>.split())<br></code></pre></td></tr></table></figure>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2023/08/26/Typora%E8%AF%AD%E6%B3%95/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>Typora语法</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/08/25/hello-world/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      Hello World
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://microdaniel.github.io/">Daniel</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg" />
+                  <a class="foot-link"
+                     href="mailto:singforeal@163.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/sinsinsing">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-bilibili.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://space.bilibili.com/356307646">哔哩哔哩</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-xhs.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5b6ea92be85cb900013df89f">小红书</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg" />
+                <a class="foot-link" href="mailto:singforeal@163.com">singforeal@163.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">Space | sinG</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+      <script src="https://unpkg.com/js-polyfills@0.1.43/es6.js"></script>
+      <script id="MathJax-script"
+              async
+              src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    
+    
+  
+
+  </body>
+</html>

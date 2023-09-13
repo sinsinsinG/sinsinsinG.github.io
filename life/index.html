@@ -84,7 +84,7 @@
     </div>
     <div class="body">
       
-  <div class="wall wall-category--plain">
+  <div class="wall wall-category">
     <div class="wall-main">
       <div class="wall-category-title">
         <div class="title-icon"
@@ -93,7 +93,7 @@
       </div>
       <div class="wall-category-description"></div>
       <div class="wall-category-tags">
-        <div id="tags-outer"><a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1em;">测试</a></div>
+        <div id="tags-outer"><canvas width="500" height="500" id="tagCanvas"><a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 14px;">测试</a><canvas></div>
       </div>
     </div>
   </div>
@@ -111,7 +111,7 @@
       <div class="post-excerpt"></div>
     </div>
     <div class="post__foot">
-      <div class="post-tags">
+      <div class="post-tags">&#8226;
   <a href="/tags/%E6%B5%8B%E8%AF%95/" class="post-tag">#测试</a>
 
 </div>
@@ -207,7 +207,41 @@
       </div>
     </div>
     
+      <script src="https://unpkg.com/js-polyfills@0.1.43/es6.js"></script>
+      <script id="MathJax-script"
+              async
+              src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
     
+    
+  
+    <script type="text/javascript"
+            charset="utf-8"
+            src="/js/tagcanvas.min.js"></script>
+    <script type = "text/javascript">
+        window.onload = function() {
+            try {
+                TagCanvas.Start('tagCanvas', '', {
+                    outlineThickness: 1,
+                    maxSpeed: 0.03,
+                    // freezeActive: true,
+                    // freezeDecel: true,
+                    textColour: null,
+                    textColour: null,
+                    outlineColour: "#aaa",
+                    weight: true,
+                    padding: 4,
+                    // clickToFront: 200,
+                    fadIn: 200,
+                    // pinchZoom: true,
+                    wheelZoom: false,
+                    initial: [0.1, -0.03]
+                });
+            } catch (e) {
+                // something went wrong, hide the canvas container
+                document.getElementById('tags-outer').style.display = 'none';
+            }
+        };
+    </script>
   
 
   </body>

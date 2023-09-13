@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        Typora语法 | Space | sinG
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/life">LIFE</a>
+            
+              <a class="nav-menu-item" href="/math">MATH</a>
+            
+              <a class="nav-menu-item" href="/cs">CS</a>
+            
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner--toc">
+      <div class="post-content__head">
+        <div class="post-title">Typora语法</div>
+        <div class="post-info">
+          
+  <a href="/tags/Typora/" class="post-tag">#Typora</a><a href="/tags/markdown/" class="post-tag">#markdown</a>
+
+
+          <span class="post-date">2023-08-26</span>
+        </div>
+      </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86"><span class="post-toc-text">一、文本处理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%87%E6%9C%AC%E5%B1%85%E4%B8%AD"><span class="post-toc-text">文本居中</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="post-toc-text">下划线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E7%BA%BF"><span class="post-toc-text">删除线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E9%9A%94%E7%BA%BF"><span class="post-toc-text">分隔线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%95%E7%94%A8"><span class="post-toc-text">引用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E8%A1%A8%E6%A0%BC"><span class="post-toc-text">二、表格</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A1%A8%E6%A0%BC%E5%86%85%E6%8D%A2%E8%A1%8C"><span class="post-toc-text">1. 表格内换行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="post-toc-text">2. 任务列表</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E4%BB%A3%E7%A0%81"><span class="post-toc-text">三、代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E8%B6%85%E9%93%BE%E6%8E%A5%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="post-toc-text">四、超链接与引用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="post-toc-text">五、数学公式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%89%93%E5%BC%80typora%E9%80%89%E6%8B%A9%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9D%97"><span class="post-toc-text">1. 打开Typora选择数学模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="post-toc-text">2. 常用公式的代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%A0%87"><span class="post-toc-text">上&#x2F;下标</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E5%BC%8F"><span class="post-toc-text">分式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="post-toc-text">省略号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BC%80%E6%A0%B9%E5%8F%B7"><span class="post-toc-text">开根号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%9F%A2%E9%87%8F"><span class="post-toc-text">矢量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A7%AF%E5%88%86"><span class="post-toc-text">积分</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9E%81%E9%99%90"><span class="post-toc-text">极限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B4%AF%E5%8A%A0"><span class="post-toc-text">累加</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%B4%AF%E4%B9%98"><span class="post-toc-text">累乘</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D"><span class="post-toc-text">希腊字母</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0"><span class="post-toc-text">三角函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AF%B9%E6%95%B0%E5%87%BD%E6%95%B0"><span class="post-toc-text">对数函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="post-toc-text">关系运算符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%B6%E5%AE%83%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="post-toc-text">其它特殊字符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%8A%B1%E6%8B%AC%E5%8F%B7"><span class="post-toc-text">花括号</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A9%BA%E6%A0%BC"><span class="post-toc-text">空格</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E7%94%BB%E5%9B%BE"><span class="post-toc-text">六、画图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="post-toc-text">1. 流程图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AB%96%E5%90%91%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="post-toc-text">竖向流程图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A8%AA%E5%90%91%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="post-toc-text">横向流程图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%AB%96%E5%90%91"><span class="post-toc-text">标准流程图竖向</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%A8%AA%E5%90%91"><span class="post-toc-text">标准流程图横向</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="post-toc-text">2. 时序图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8A%B6%E6%80%81%E5%9B%BE"><span class="post-toc-text">3. 状态图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B1%BB%E5%9B%BE"><span class="post-toc-text">4. 类图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%98%E7%89%B9%E5%9B%BE"><span class="post-toc-text">5. 甘特图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A5%BC%E5%9B%BE"><span class="post-toc-text">6. 饼图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#uml%E6%97%B6%E5%BA%8F%E5%9B%BE%E6%BA%90%E7%A0%81%E6%A0%B7%E4%BE%8B"><span class="post-toc-text">7. UML时序图源码样例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#uml%E6%97%B6%E5%BA%8F%E5%9B%BE%E6%BA%90%E7%A0%81%E5%A4%8D%E6%9D%82%E6%A0%B7%E4%BE%8B"><span class="post-toc-text">UML时序图源码复杂样例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#uml%E6%A0%87%E5%87%86%E6%97%B6%E5%BA%8F%E5%9B%BE%E6%A0%B7%E4%BE%8B"><span class="post-toc-text">UML标准时序图样例</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83emoji%E5%B0%8F%E8%A1%A8%E6%83%85"><span class="post-toc-text">七、Emoji小表情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#people"><span class="post-toc-text">People</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nature"><span class="post-toc-text">Nature</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#objects"><span class="post-toc-text">Objects</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#places"><span class="post-toc-text">Places</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#symbols"><span class="post-toc-text">Symbols</span></a></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        #
+<center>
+Typora语法
+</center>
+<h2 id="一文本处理">一、文本处理</h2>
+<h3 id="文本居中">文本居中</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;center&gt;这里输入要居中改的字体&lt;/center&gt;<br>&lt;div align = &quot;center&quot;&gt;这里输入要居中改的字体&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+<center>
+这里输入要居中改的字体
+</center>
+<div data-align="center">
+这里输入要居中改的字体
+</div>
+<h3 id="下划线"><strong>下划线</strong></h3>
+<p>或者快捷键Ctrl+U</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;u&gt;下划线内容&lt;/u&gt;<br></code></pre></td></tr></table></figure>
+<p><u>下划线内容</u></p>
+<h3 id="删除线"><strong>删除线</strong></h3>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">~~世界是平坦的。~~ 我们现在知道世界是圆的。<br></code></pre></td></tr></table></figure>
+<p><del>世界是平坦的。</del> 我们现在知道世界是圆的。</p>
+<h3 id="分隔线"><strong>分隔线</strong></h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">---<br>***<br></code></pre></td></tr></table></figure>
+<hr />
+<hr />
+<h3 id="引用"><strong>引用</strong></h3>
+<p>要创建块引用，请在段落前添加一个 <code>&gt;</code> 符号。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">&gt; Dorothy followed her through many of the beautiful rooms in her castle.<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>Dorothy followed her through many of the beautiful rooms in her
+castle.</p>
+</blockquote>
+<p>块引用可以嵌套。在要嵌套的段落前添加一个 <code>&gt;&gt;</code>
+符号。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">&gt; Dorothy followed her through many of the beautiful rooms in her castle.<br>&gt;<br>&gt;&gt; The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.<br>&gt; - Revenue was off the chart.<br>&gt; - Profits were higher than ever.<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>Dorothy followed her through many of the beautiful rooms in her
+castle.</p>
+<blockquote>
+<p>The Witch bade her clean the pots and kettles and sweep the floor and
+keep the fire fed with wood.</p>
+</blockquote>
+<ul>
+<li>Revenue was off the chart.</li>
+<li>Profits were higher than ever.</li>
+</ul>
+</blockquote>
+<h2 id="二表格">二、表格</h2>
+<h3 id="表格内换行">1. 表格内换行</h3>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">&lt;br&gt;<br></code></pre></td></tr></table></figure>
+<p>后续换行（表格内也是）</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Markdown语法</th>
+<th>预览效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. first<br>2.hi<br></td>
+<td>First itemSecond itemThird itemFourth item</td>
+</tr>
+<tr class="even">
+<td><code>1. First item1. Second item1. Third item1. Fourth item</code></td>
+<td>First itemSecond itemThird itemFourth item</td>
+</tr>
+<tr class="odd">
+<td><code>1. First item8. Second item3. Third item5. Fourth item</code></td>
+<td>First itemSecond itemThird itemFourth item</td>
+</tr>
+<tr class="even">
+<td><code>1. First item2. Second item3. Third item  1. Indented item  2. Indented item4. Fourth item</code></td>
+<td>First itemSecond itemThird itemIndented itemIndented itemFourth
+item</td>
+</tr>
+</tbody>
+</table>
+<h3 id="任务列表"><strong>2. 任务列表</strong></h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">- [x] Write the press release<br>- [ ] Update the website<br>- [ ] Contact the media<br></code></pre></td></tr></table></figure>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Write the press
+release</label></li>
+<li><label><input type="checkbox" />Update the website</label></li>
+<li><label><input type="checkbox" />Contact the media</label></li>
+</ul>
+<h2 id="三代码">三、代码</h2>
+<p><strong>行内代码</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">写在 `` 中<br></code></pre></td></tr></table></figure>
+<p><code>#include&lt;stdio.h&gt;</code></p>
+<h2 id="四超链接与引用">四、超链接与引用</h2>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">这是一个链接 [Markdown语法](https://markdown.com.cn)。<br></code></pre></td></tr></table></figure>
+<p>这是一个链接 <a target="_blank" rel="noopener" href="https://markdown.com.cn">Markdown语法</a>。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">&lt;https://markdown.com.cn&gt;<br>&lt;fake@example.com&gt;<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://markdown.com.cn"
+class="uri">https://markdown.com.cn</a> <a
+href="mailto:fake@example.com" class="email">fake@example.com</a></p>
+<h2 id="五数学公式">五、数学公式</h2>
+<h3 id="打开typora选择数学模块">1. 打开Typora选择数学模块</h3>
+<ul>
+<li>点击“段落”—&gt;“公式块”</li>
+<li>快捷键Ctrl+Shift+m</li>
+<li>“$$”+回车 (行间公式)</li>
+<li><code>“$”</code> 中间输入公式 <code>“$”</code> （行内公式）</li>
+</ul>
+<h3 id="常用公式的代码">2. 常用公式的代码</h3>
+<h4 id="上下标">上/下标</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$x^2 $</td>
+<td>x^2</td>
+</tr>
+<tr class="even">
+<td>$y_1 $</td>
+<td>y_1</td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="分式">分式</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$1/2 $</td>
+<td>1/2</td>
+</tr>
+<tr class="even">
+<td>$ $</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="省略号">省略号</h4>
+<table>
+<thead>
+<tr class="header">
+<th>省略号</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\cdots\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="开根号">开根号</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\sqrt{2}\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="矢量">矢量</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$ $</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="积分">积分</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\int{x}dx\)</span></td>
+<td>dx</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\int_{1}^{2}{x}dx\)</span></td>
+<td>_{1}^{2}{x}dx</td>
+</tr>
+</tbody>
+</table>
+<h4 id="极限">极限</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\lim{a+b}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span
+class="math inline">\(\lim_{n\rightarrow+\infty}{a+b}\)</span></td>
+<td>_{n+}{a+b}</td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="累加">累加</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\sum{a}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>$ _{n=1}^{100}{a_n}$</td>
+<td>_{n=1}^{100}{a_n}</td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="累乘">累乘</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\prod{x}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\prod_{n=1}^{99}{x_n}\)</span></td>
+<td>_{n=1}^{99}{x_n}</td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="希腊字母">希腊字母</h4>
+<table>
+<thead>
+<tr class="header">
+<th><strong>大写</strong></th>
+<th><strong>Markdown</strong></th>
+<th><strong>小写</strong></th>
+<th><strong>Markdown</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span></td>
+<td>A</td>
+<td><span class="math inline">\(\alpha\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B\)</span></td>
+<td>B</td>
+<td><span class="math inline">\(\beta\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Gamma\)</span></td>
+<td></td>
+<td><span class="math inline">\(\gamma\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Delta\)</span></td>
+<td></td>
+<td><span class="math inline">\(\delta\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(E\)</span></td>
+<td>E</td>
+<td><span class="math inline">\(\epsilon\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><span class="math inline">\(\varepsilon\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z\)</span></td>
+<td>Z</td>
+<td><span class="math inline">\(\zeta\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(H\)</span></td>
+<td>H</td>
+<td><span class="math inline">\(\eta\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Theta\)</span></td>
+<td></td>
+<td><span class="math inline">\(\theta\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(I\)</span></td>
+<td>I</td>
+<td><span class="math inline">\(\iota\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(K\)</span></td>
+<td>K</td>
+<td><span class="math inline">\(\kappa\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Lambda\)</span></td>
+<td></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(M\)</span></td>
+<td>M</td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N\)</span></td>
+<td>N</td>
+<td><span class="math inline">\(\nu\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Xi\)</span></td>
+<td></td>
+<td><span class="math inline">\(\xi\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(O\)</span></td>
+<td>O</td>
+<td><span class="math inline">\(\omicron\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Pi\)</span></td>
+<td></td>
+<td><span class="math inline">\(\pi\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P\)</span></td>
+<td>P</td>
+<td><span class="math inline">\(\rho\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Sigma\)</span></td>
+<td></td>
+<td><span class="math inline">\(\sigma\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T\)</span></td>
+<td>T</td>
+<td><span class="math inline">\(\tau\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Upsilon\)</span></td>
+<td></td>
+<td><span class="math inline">\(\upsilon\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Phi\)</span></td>
+<td></td>
+<td><span class="math inline">\(\phi\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><span class="math inline">\(\varphi\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X\)</span></td>
+<td>X</td>
+<td><span class="math inline">\(\chi\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Psi\)</span></td>
+<td></td>
+<td><span class="math inline">\(\psi\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Omega\)</span></td>
+<td></td>
+<td><span class="math inline">\(\omega\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="三角函数">三角函数</h4>
+<table>
+<thead>
+<tr class="header">
+<th>三角函数</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\sin\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="对数函数">对数函数</h4>
+<table>
+<thead>
+<tr class="header">
+<th>算式</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\ln2\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\log_28\)</span></td>
+<td>_28</td>
+</tr>
+<tr class="odd">
+<td>$ $</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="关系运算符">关系运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th>运算符</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\pm\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\times\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\cdot\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\div\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\neq\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\equiv\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\leq\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\geq\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="其它特殊字符">其它特殊字符</h4>
+<table>
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\forall\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\infty\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\emptyset\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\exists\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\nabla\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\bot\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\angle\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\because\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\therefore\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>​</p>
+<h4 id="花括号">花括号</h4>
+$c(u)=
+<span class="math display">\[\begin{cases} \sqrt\frac{1}{N}，u=0\\
+\sqrt\frac{2}{N}， u\neq0\end{cases}\]</span>
+<p>$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">c(u)=\begin&#123;cases&#125; \sqrt\frac&#123;1&#125;&#123;N&#125;，u=0\\ \sqrt\frac&#123;2&#125;&#123;N&#125;， u\neq0\end&#123;cases&#125; <br></code></pre></td></tr></table></figure>
+<p>Consider the function</p>
+<p><span class="math inline">\(f(x)=\begin{cases} cos(\pi x) ,x&lt;-1 \\
+x ,-1\leqslant x\leqslant1 \\ sin(\pi
+x/2),x&gt;1\end{cases}\)</span></p>
+<p>Write a function which takes a vector Vec as a single argument and
+returns the vector of values of the function evaluated at the values in
+Vec. Try out your function; for example, input the vector (−2, −1, 0, 1,
+2).</p>
+<h4 id="空格">空格</h4>
+<p><span class="math inline">\(a \quad b\)</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">a \quad b<br></code></pre></td></tr></table></figure>
+<p>矩阵 <span class="math display">\[
+a = \left[
+\matrix{
+  \alpha_1 &amp; test1\\
+  \alpha_2 &amp; test2\\
+  \alpha_3 &amp; test3
+}
+\right]
+\]</span> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>a = \left[<br>\matrix&#123;<br>  \alpha_1 &amp; test1\\<br>  \alpha_2 &amp; test2\\<br>  \alpha_3 &amp; test3 <br>&#125;<br>\right]<br><br><br><br></code></pre></td></tr></table></figure></p>
+<p><span class="math display">\[
+\]</span>$$</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs swift">\left[ \begin&#123;matrix&#125; <br>      a <span class="hljs-operator">&amp;</span> b <span class="hljs-operator">&amp;</span> c <span class="hljs-operator">&amp;</span> d <span class="hljs-operator">&amp;</span> e\\ <br>      f <span class="hljs-operator">&amp;</span> g <span class="hljs-operator">&amp;</span> h <span class="hljs-operator">&amp;</span> i <span class="hljs-operator">&amp;</span> j \\ <br>      k <span class="hljs-operator">&amp;</span> l <span class="hljs-operator">&amp;</span> m <span class="hljs-operator">&amp;</span> n <span class="hljs-operator">&amp;</span> o \\ <br>      p <span class="hljs-operator">&amp;</span> q <span class="hljs-operator">&amp;</span> r <span class="hljs-operator">&amp;</span> s <span class="hljs-operator">&amp;</span> t <br>      \end&#123;matrix&#125; \right]<br><br><br>\left[ \begin&#123;matrix&#125; <br>      <span class="hljs-number">1</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">1</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">1</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">1</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">1</span>\\ <br>      <span class="hljs-number">2</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">2</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">2</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">2</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">2</span>\\ <br>      <span class="hljs-number">3</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">3</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">3</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">3</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">3</span>\\ <br>      <span class="hljs-number">4</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">4</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">4</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">4</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">4</span>\\<br>      <span class="hljs-number">5</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">5</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">5</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">5</span> <span class="hljs-operator">&amp;</span> <span class="hljs-number">5</span><br>      \end&#123;matrix&#125; \right]<br></code></pre></td></tr></table></figure>
+<h2 id="六画图"><strong>六、画图</strong></h2>
+<p>输入 <strong>```mermaid</strong>
+然后敲击回车，即可初始化一张空白图。</p>
+<h3 id="流程图">1. 流程图</h3>
+<h4 id="竖向流程图">竖向流程图</h4>
+<p><code>graph</code> 关键字就是声明一张流程图，<code>TD</code>
+表示的是方向，这里的含义是 Top-Down 由上至下。</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tex">graph TD;<br>    A--&gt;B;<br>    A--&gt;C;<br>    B--&gt;D;<br>    A--&gt;H;<br></code></pre></td></tr></table></figure>
+<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">graph TD;<br>    A--&gt;B;<br>    A--&gt;C;<br>    B--&gt;D;<br>    A--&gt;H;<br></code></pre></td></tr></table></figure></p>
+<h4 id="横向流程图">横向流程图</h4>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs tex">```mermaid<br>graph LR<br>A[方形] --&gt;B(圆角)<br>    B --&gt; C&#123;条件a&#125;<br>    C --&gt;|a=1| D[结果1]<br>    C --&gt;|a=2| E[结果2]<br>    F[横向流程图]<br>```<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">graph LR<br>A[方形] --&gt;B(圆角)<br>    B --&gt; C&#123;条件a&#125;<br>    C --&gt;|a=1| D[结果1]<br>    C --&gt;|a=2| E[结果2]<br>    F[横向流程图]<br></code></pre></td></tr></table></figure>
+<h4 id="标准流程图竖向">标准流程图竖向</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">```flow<br>st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st-&gt;op-&gt;cond<br>cond(yes)-&gt;io-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br>```<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs flow">st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st-&gt;op-&gt;cond<br>cond(yes)-&gt;io-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br></code></pre></td></tr></table></figure>
+<h4 id="标准流程图横向">标准流程图横向</h4>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs tex">```flow<br>st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st(right)-&gt;op(right)-&gt;cond<br>cond(yes)-&gt;io(bottom)-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br>```<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs flow">st=&gt;start: 开始框<br>op=&gt;operation: 处理框<br>cond=&gt;condition: 判断框(是或否?)<br>sub1=&gt;subroutine: 子流程<br>io=&gt;inputoutput: 输入输出框<br>e=&gt;end: 结束框<br>st(right)-&gt;op(right)-&gt;cond<br>cond(yes)-&gt;io(bottom)-&gt;e<br>cond(no)-&gt;sub1(right)-&gt;op<br></code></pre></td></tr></table></figure>
+<h3 id="时序图">2. 时序图</h3>
+<p><code>-&gt;&gt;</code> 代表实线箭头</p>
+<p><code>--&gt;&gt;</code> 则代表虚线</p>
+<p><code>-&gt;</code>表示无箭头实线</p>
+<p><code>-&gt;&gt;</code>表示无箭头虚线</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs merm">sequenceDiagram<br>    Alice-&gt;&gt;John: Hello John, how are you?<br>    John--&gt;&gt;Alice: Great!<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">sequenceDiagram<br>    Alice-&gt;&gt;John: Hello John, how are you?<br>    John--&gt;&gt;Alice: Great!<br>    M-&gt;&gt;N:hi<br>    left-&gt;right:i<br>    sure--&gt;left:cool<br></code></pre></td></tr></table></figure>
+<h3 id="状态图">3. 状态图</h3>
+<p><code>[*]</code> 表示开始或者结束，如果在箭头右边则表示结束。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">stateDiagram<br>    [*] --&gt; s1 <br>    [*] --&gt;hi<br>    s1 --&gt; a1<br>    s1 --&gt; [*]<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">stateDiagram<br>    [*] --&gt; s1 <br>    [*] --&gt;hi<br>    s1 --&gt; a1<br>    s1 --&gt; [*]<br></code></pre></td></tr></table></figure>
+<h3 id="类图">4. 类图</h3>
+<p><code>&lt;|--</code> 表示继承，<code>+</code> 表示
+<code>public</code>，<code>-</code> 表示 <code>private</code>，学过 Java
+的应该都知道。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs text">classDiagram<br>      Animal &lt;|-- Duck<br>      Animal &lt;|-- Fish<br>      Animal &lt;|-- Zebra<br>      Animal : +int age<br>      Animal : +String gender<br>      Animal: +isMammal()<br>      Animal: +mate()<br>      class Duck&#123;<br>          +String beakColor<br>          +swim()<br>          +quack()<br>      &#125;<br>      class Fish&#123;<br>          -int sizeInFeet<br>          -canEat()<br>      &#125;<br>      class Zebra&#123;<br>          +bool is_wild<br>          +run()<br>      &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">classDiagram<br>      Animal &lt;|-- Duck<br>      Animal &lt;|-- Fish<br>      Animal &lt;|-- Zebra<br>      Animal : +int age<br>      Animal : +String gender<br>      Animal: +isMammal()<br>      Animal: +mate()<br>      class Duck&#123;<br>          +String beakColor<br>          +swim()<br>          +quack()<br>      &#125;<br>      class Fish&#123;<br>          -int sizeInFeet<br>          -canEat()<br>      &#125;<br>      class Zebra&#123;<br>          +bool is_wild<br>          +run()<br>      &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="甘特图">5. 甘特图</h3>
+<p>一般用来表示项目的计划排期，目前在工作中经常会用到。</p>
+<p>从上到下依次是图片标题、日期格式、项目、项目细分的任务。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">gantt<br>    title 工作计划<br>    dateFormat  YYYY-MM-DD<br>    section SECTION1<br>    A task           :a1, 2020-01-01, 30d<br>    Another task     :after a1  , 20d<br>    section Another<br>    Task in sec      :2020-01-12  , 12d<br>    another task      : 24d<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">gantt<br>    title 工作计划<br>    dateFormat  YYYY-MM-DD<br>    section SECTION1<br>    A task           :a1, 2020-01-01, 30d<br>    Another task     :after a1  , 20d<br>    section Another<br>    Task in sec      :2020-01-12  , 12d<br>    another task      : 24d<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">```mermaid<br>%% 语法示例<br>        gantt<br>        dateFormat  YYYY-MM-DD<br>        title 软件开发甘特图<br>        section 设计<br>        需求                      :done,    des1, 2014-01-06,2014-01-08<br>        原型                      :active,  des2, 2014-01-09, 3d<br>        UI设计                     :         des3, after des2, 5d<br>    未来任务                     :         des4, after des3, 5d<br>        section 开发<br>        学习准备理解需求                      :crit, done, 2014-01-06,24h<br>        设计框架                             :crit, done, after des2, 2d<br>        开发                                 :crit, active, 3d<br>        未来任务                              :crit, 5d<br>        耍                                   :2d<br>        section 测试<br>        功能测试                              :active, a1, after des3, 3d<br>        压力测试                               :after a1  , 20h<br>        测试报告                               : 48h<br>```<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">%% 语法示例<br>        gantt<br>        dateFormat  YYYY-MM-DD<br>        title 软件开发甘特图<br>        section 设计<br>        需求                      :done,    des1, 2014-01-06,2014-01-08<br>        原型                      :active,  des2, 2014-01-09, 3d<br>        UI设计                     :         des3, after des2, 5d<br>    未来任务                     :         des4, after des3, 5d<br>        section 开发<br>        学习准备理解需求                      :crit, done, 2014-01-06,24h<br>        设计框架                             :crit, done, after des2, 2d<br>        开发                                 :crit, active, 3d<br>        未来任务                              :crit, 5d<br>        耍                                   :2d<br>        section 测试<br>        功能测试                              :active, a1, after des3, 3d<br>        压力测试                               :after a1  , 20h<br>        测试报告                               : 48h<br></code></pre></td></tr></table></figure>
+<h3 id="饼图">6. 饼图</h3>
+<p>饼图使用 <code>pie</code>
+表示，标题下面分别是区域名称及其百分比。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">pie<br>    title Key elements in Product X<br>    &quot;Calcium&quot; : 42.96<br>    &quot;Potassium&quot; : 50.05<br>    &quot;Magnesium&quot; : 10.01<br>    &quot;Iron&quot; :  5<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">pie<br>    title Key elements in Product X<br>    &quot;Calcium&quot; : 42.96<br>    &quot;Potassium&quot; : 50.05<br>    &quot;Magnesium&quot; : 10.01<br>    &quot;Iron&quot; :  5<br></code></pre></td></tr></table></figure>
+<h3 id="uml时序图源码样例">7. UML时序图源码样例</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">```sequence<br>对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B--&gt;对象A: 我很好(响应)<br>对象A-&gt;对象B: 你真的好吗？<br>```<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sequence">对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B--&gt;对象A: 我很好(响应)<br>对象A-&gt;对象B: 你真的好吗？<br></code></pre></td></tr></table></figure>
+<h4
+id="uml时序图源码复杂样例"><strong>UML时序图源码复杂样例</strong></h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">```sequence<br>Title: 标题：复杂使用<br>对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B--&gt;对象A: 我很好(响应)<br>对象B-&gt;小三: 你好吗<br>小三--&gt;&gt;对象A: 对象B找我了<br>对象A-&gt;对象B: 你真的好吗？<br>Note over 小三,对象B: 我们是朋友<br>participant C<br>Note right of C: 没人陪我玩<br>```<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sequence">Title: 标题：复杂使用<br>对象A-&gt;对象B: 对象B你好吗?（请求）<br>Note right of 对象B: 对象B的描述<br>Note left of 对象A: 对象A的描述(提示)<br>对象B--&gt;对象A: 我很好(响应)<br>对象B-&gt;小三: 你好吗<br>小三--&gt;&gt;对象A: 对象B找我了<br>对象A-&gt;对象B: 你真的好吗？<br>Note over 小三,对象B: 我们是朋友<br>participant C<br>Note right of C: 没人陪我玩<br></code></pre></td></tr></table></figure>
+<h4 id="uml标准时序图样例"><strong>UML标准时序图样例</strong></h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">```mermaid<br>%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头<br>  sequenceDiagram<br>    participant 张三<br>    participant 李四<br>    张三-&gt;王五: 王五你好吗？<br>    loop 健康检查<br>        王五-&gt;王五: 与疾病战斗<br>    end<br>    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...<br>    李四--&gt;&gt;张三: 很好!<br>    王五-&gt;李四: 你怎么样?<br>    李四--&gt;王五: 很好!<br>```<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mermaid">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头<br>  sequenceDiagram<br>    participant 张三<br>    participant 李四<br>    张三-&gt;王五: 王五你好吗？<br>    loop 健康检查<br>        王五-&gt;王五: 与疾病战斗<br>    end<br>    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...<br>    李四--&gt;&gt;张三: 很好!<br>    王五-&gt;李四: 你怎么样?<br>    李四--&gt;王五: 很好!<br></code></pre></td></tr></table></figure>
+<h2 id="七emoji小表情"><strong>七、Emoji小表情</strong></h2>
+<h3 id="people">People</h3>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 37%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>😄 <code>:smile:</code></th>
+<th>😆 <code>:laughing:</code></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>😊 <code>:blush:</code></td>
+<td>😃 <code>:smiley:</code></td>
+<td>☺️ <code>:relaxed:</code></td>
+</tr>
+<tr class="even">
+<td>😏 <code>:smirk:</code></td>
+<td>😍 <code>:heart_eyes:</code></td>
+<td>😘 <code>:kissing_heart:</code></td>
+</tr>
+<tr class="odd">
+<td>😚 <code>:kissing_closed_eyes:</code></td>
+<td>😳 <code>:flushed:</code></td>
+<td>😌 <code>:relieved:</code></td>
+</tr>
+<tr class="even">
+<td>😆 <code>:satisfied:</code></td>
+<td>😁 <code>:grin:</code></td>
+<td>😉 <code>:wink:</code></td>
+</tr>
+<tr class="odd">
+<td>😜 <code>:stuck_out_tongue_winking_eye:</code></td>
+<td>😝 <code>:stuck_out_tongue_closed_eyes:</code></td>
+<td>😀 <code>:grinning:</code></td>
+</tr>
+<tr class="even">
+<td>😗 <code>:kissing:</code></td>
+<td>😙 <code>:kissing_smiling_eyes:</code></td>
+<td>😛 <code>:stuck_out_tongue:</code></td>
+</tr>
+<tr class="odd">
+<td>😴 <code>:sleeping:</code></td>
+<td>😟 <code>:worried:</code></td>
+<td>😦 <code>:frowning:</code></td>
+</tr>
+<tr class="even">
+<td>😧 <code>:anguished:</code></td>
+<td>😮 <code>:open_mouth:</code></td>
+<td>😬 <code>:grimacing:</code></td>
+</tr>
+<tr class="odd">
+<td>😕 <code>:confused:</code></td>
+<td>😯 <code>:hushed:</code></td>
+<td>😑 <code>:expressionless:</code></td>
+</tr>
+<tr class="even">
+<td>😒 <code>:unamused:</code></td>
+<td>😅 <code>:sweat_smile:</code></td>
+<td>😓 <code>:sweat:</code></td>
+</tr>
+<tr class="odd">
+<td>😥 <code>:disappointed_relieved:</code></td>
+<td>😩 <code>:weary:</code></td>
+<td>😔 <code>:pensive:</code></td>
+</tr>
+<tr class="even">
+<td>😞 <code>:disappointed:</code></td>
+<td>😖 <code>:confounded:</code></td>
+<td>😨 <code>:fearful:</code></td>
+</tr>
+<tr class="odd">
+<td>😰 <code>:cold_sweat:</code></td>
+<td>😣 <code>:persevere:</code></td>
+<td>😢 <code>:cry:</code></td>
+</tr>
+<tr class="even">
+<td>😭 <code>:sob:</code></td>
+<td>😂 <code>:joy:</code></td>
+<td>😲 <code>:astonished:</code></td>
+</tr>
+<tr class="odd">
+<td>😱 <code>:scream:</code></td>
+<td></td>
+<td>😫 <code>:tired_face:</code></td>
+</tr>
+<tr class="even">
+<td>😠 <code>:angry:</code></td>
+<td>😡 <code>:rage:</code></td>
+<td>😤 <code>:triumph:</code></td>
+</tr>
+<tr class="odd">
+<td>😪 <code>:sleepy:</code></td>
+<td>😋 <code>:yum:</code></td>
+<td>😷 <code>:mask:</code></td>
+</tr>
+<tr class="even">
+<td>😎 <code>:sunglasses:</code></td>
+<td>😵 <code>:dizzy_face:</code></td>
+<td>👿 <code>:imp:</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 34%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>😈 <code>:smiling_imp:</code></th>
+<th>😐 <code>:neutral_face:</code></th>
+<th>😶 <code>:no_mouth:</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>😇 <code>:innocent:</code></td>
+<td>👽 <code>:alien:</code></td>
+<td>💛 <code>:yellow_heart:</code></td>
+</tr>
+<tr class="even">
+<td>💙 <code>:blue_heart:</code></td>
+<td>💜 <code>:purple_heart:</code></td>
+<td>❤️ <code>:heart:</code></td>
+</tr>
+<tr class="odd">
+<td>💚 <code>:green_heart:</code></td>
+<td>💔 <code>:broken_heart:</code></td>
+<td>💓 <code>:heartbeat:</code></td>
+</tr>
+<tr class="even">
+<td>💗 <code>:heartpulse:</code></td>
+<td>💕 <code>:two_hearts:</code></td>
+<td>💞 <code>:revolving_hearts:</code></td>
+</tr>
+<tr class="odd">
+<td>💘 <code>:cupid:</code></td>
+<td>💖 <code>:sparkling_heart:</code></td>
+<td>✨ <code>:sparkles:</code></td>
+</tr>
+<tr class="even">
+<td>⭐️ <code>:star:</code></td>
+<td>🌟 <code>:star2:</code></td>
+<td>💫 <code>:dizzy:</code></td>
+</tr>
+<tr class="odd">
+<td>💥 <code>:boom:</code></td>
+<td>💥 <code>:collision:</code></td>
+<td>💢 <code>:anger:</code></td>
+</tr>
+<tr class="even">
+<td>❗️ <code>:exclamation:</code></td>
+<td>❓ <code>:question:</code></td>
+<td>❕ <code>:grey_exclamation:</code></td>
+</tr>
+<tr class="odd">
+<td>❔ <code>:grey_question:</code></td>
+<td>💤 <code>:zzz:</code></td>
+<td>💨 <code>:dash:</code></td>
+</tr>
+<tr class="even">
+<td>💦 <code>:sweat_drops:</code></td>
+<td>🎶 <code>:notes:</code></td>
+<td>🎵 <code>:musical_note:</code></td>
+</tr>
+<tr class="odd">
+<td>🔥 <code>:fire:</code></td>
+<td>💩 <code>:hankey:</code></td>
+<td>💩 <code>:poop:</code></td>
+</tr>
+<tr class="even">
+<td>💩 <code>:shit:</code></td>
+<td>👍 <code>:+1:</code></td>
+<td>👍 <code>:thumbsup:</code></td>
+</tr>
+<tr class="odd">
+<td>👎 <code>:-1:</code></td>
+<td>👎 <code>:thumbsdown:</code></td>
+<td>👌 <code>:ok_hand:</code></td>
+</tr>
+<tr class="even">
+<td>👊 <code>:punch:</code></td>
+<td>👊 <code>:facepunch:</code></td>
+<td>✊ <code>:fist:</code></td>
+</tr>
+<tr class="odd">
+<td>✌️ <code>:v:</code></td>
+<td>👋 <code>:wave:</code></td>
+<td>✋ <code>:hand:</code></td>
+</tr>
+<tr class="even">
+<td>✋ <code>:raised_hand:</code></td>
+<td>👐 <code>:open_hands:</code></td>
+<td>☝️ <code>:point_up:</code></td>
+</tr>
+<tr class="odd">
+<td>👇 <code>:point_down:</code></td>
+<td>👈 <code>:point_left:</code></td>
+<td>👉 <code>:point_right:</code></td>
+</tr>
+<tr class="even">
+<td>🙌 <code>:raised_hands:</code></td>
+<td>🙏 <code>:pray:</code></td>
+<td>👆 <code>:point_up_2:</code></td>
+</tr>
+<tr class="odd">
+<td>👏 <code>:clap:</code></td>
+<td>💪 <code>:muscle:</code></td>
+<td>🤘 <code>:metal:</code></td>
+</tr>
+<tr class="even">
+<td>🖕 <code>:fu:</code></td>
+<td>🚶 <code>:walking:</code></td>
+<td>🏃 <code>:runner:</code></td>
+</tr>
+<tr class="odd">
+<td>🏃 <code>:running:</code></td>
+<td>👫 <code>:couple:</code></td>
+<td>👪 <code>:family:</code></td>
+</tr>
+<tr class="even">
+<td>👬 <code>:two_men_holding_hands:</code></td>
+<td>👭 <code>:two_women_holding_hands:</code></td>
+<td>💃 <code>:dancer:</code></td>
+</tr>
+<tr class="odd">
+<td>👯 <code>:dancers:</code></td>
+<td>🙆 <code>:ok_woman:</code></td>
+<td>🙅 <code>:no_good:</code></td>
+</tr>
+<tr class="even">
+<td>💁 <code>:information_desk_person:</code></td>
+<td>🙋 <code>:raising_hand:</code></td>
+<td>👰 <code>:bride_with_veil:</code></td>
+</tr>
+<tr class="odd">
+<td>🙎 <code>:person_with_pouting_face:</code></td>
+<td>🙍 <code>:person_frowning:</code></td>
+<td>🙇 <code>:bow:</code></td>
+</tr>
+<tr class="even">
+<td>💏 <code>:couplekiss:</code></td>
+<td>💑 <code>:couple_with_heart:</code></td>
+<td>💆 <code>:massage:</code></td>
+</tr>
+<tr class="odd">
+<td>💇 <code>:haircut:</code></td>
+<td>💅 <code>:nail_care:</code></td>
+<td>👦 <code>:boy:</code></td>
+</tr>
+<tr class="even">
+<td>👧 <code>:girl:</code></td>
+<td>👩 <code>:woman:</code></td>
+<td>👨 <code>:man:</code></td>
+</tr>
+<tr class="odd">
+<td>👶 <code>:baby:</code></td>
+<td>👵 <code>:older_woman:</code></td>
+<td>👴 <code>:older_man:</code></td>
+</tr>
+<tr class="even">
+<td>👱 <code>:person_with_blond_hair:</code></td>
+<td>👲 <code>:man_with_gua_pi_mao:</code></td>
+<td>👳 <code>:man_with_turban:</code></td>
+</tr>
+<tr class="odd">
+<td>👷 <code>:construction_worker:</code></td>
+<td>👮 <code>:cop:</code></td>
+<td>👼 <code>:angel:</code></td>
+</tr>
+<tr class="even">
+<td>👸 <code>:princess:</code></td>
+<td>😺 <code>:smiley_cat:</code></td>
+<td>😸 <code>:smile_cat:</code></td>
+</tr>
+<tr class="odd">
+<td>😻 <code>:heart_eyes_cat:</code></td>
+<td>😽 <code>:kissing_cat:</code></td>
+<td>😼 <code>:smirk_cat:</code></td>
+</tr>
+<tr class="even">
+<td>🙀 <code>:scream_cat:</code></td>
+<td>😿 <code>:crying_cat_face:</code></td>
+<td>😹 <code>:joy_cat:</code></td>
+</tr>
+<tr class="odd">
+<td>😾 <code>:pouting_cat:</code></td>
+<td>👹 <code>:japanese_ogre:</code></td>
+<td>👺 <code>:japanese_goblin:</code></td>
+</tr>
+<tr class="even">
+<td>🙈 <code>:see_no_evil:</code></td>
+<td>🙉 <code>:hear_no_evil:</code></td>
+<td>🙊 <code>:speak_no_evil:</code></td>
+</tr>
+<tr class="odd">
+<td>💂 <code>:guardsman:</code></td>
+<td>💀 <code>:skull:</code></td>
+<td>🐾 <code>:feet:</code></td>
+</tr>
+<tr class="even">
+<td>👄 <code>:lips:</code></td>
+<td>💋 <code>:kiss:</code></td>
+<td>💧 <code>:droplet:</code></td>
+</tr>
+<tr class="odd">
+<td>👂 <code>:ear:</code></td>
+<td>👀 <code>:eyes:</code></td>
+<td>👃 <code>:nose:</code></td>
+</tr>
+<tr class="even">
+<td>👅 <code>:tongue:</code></td>
+<td>💌 <code>:love_letter:</code></td>
+<td>👤 <code>:bust_in_silhouette:</code></td>
+</tr>
+<tr class="odd">
+<td>👥 <code>:busts_in_silhouette:</code></td>
+<td>💬 <code>:speech_balloon:</code></td>
+<td>💭 <code>:thought_balloon:</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="nature">Nature</h3>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 27%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>☀️ <code>:sunny:</code></th>
+<th>☔️ <code>:umbrella:</code></th>
+<th>☁️ <code>:cloud:</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>❄️ <code>:snowflake:</code></td>
+<td>⛄️ <code>:snowman:</code></td>
+<td>⚡️ <code>:zap:</code></td>
+</tr>
+<tr class="even">
+<td>🌀 <code>:cyclone:</code></td>
+<td>🌁 <code>:foggy:</code></td>
+<td>🌊 <code>:ocean:</code></td>
+</tr>
+<tr class="odd">
+<td>🐱 <code>:cat:</code></td>
+<td>🐶 <code>:dog:</code></td>
+<td>🐭 <code>:mouse:</code></td>
+</tr>
+<tr class="even">
+<td>🐹 <code>:hamster:</code></td>
+<td>🐰 <code>:rabbit:</code></td>
+<td>🐺 <code>:wolf:</code></td>
+</tr>
+<tr class="odd">
+<td>🐸 <code>:frog:</code></td>
+<td>🐯 <code>:tiger:</code></td>
+<td>🐨 <code>:koala:</code></td>
+</tr>
+<tr class="even">
+<td>🐻 <code>:bear:</code></td>
+<td>🐷 <code>:pig:</code></td>
+<td>🐽 <code>:pig_nose:</code></td>
+</tr>
+<tr class="odd">
+<td>🐮 <code>:cow:</code></td>
+<td>🐗 <code>:boar:</code></td>
+<td>🐵 <code>:monkey_face:</code></td>
+</tr>
+<tr class="even">
+<td>🐒 <code>:monkey:</code></td>
+<td>🐴 <code>:horse:</code></td>
+<td>🐎 <code>:racehorse:</code></td>
+</tr>
+<tr class="odd">
+<td>🐫 <code>:camel:</code></td>
+<td>🐑 <code>:sheep:</code></td>
+<td>🐘 <code>:elephant:</code></td>
+</tr>
+<tr class="even">
+<td>🐼 <code>:panda_face:</code></td>
+<td>🐍 <code>:snake:</code></td>
+<td>🐦 <code>:bird:</code></td>
+</tr>
+<tr class="odd">
+<td>🐤 <code>:baby_chick:</code></td>
+<td>🐥 <code>:hatched_chick:</code></td>
+<td>🐣 <code>:hatching_chick:</code></td>
+</tr>
+<tr class="even">
+<td>🐔 <code>:chicken:</code></td>
+<td>🐧 <code>:penguin:</code></td>
+<td>🐢 <code>:turtle:</code></td>
+</tr>
+<tr class="odd">
+<td>🐛 <code>:bug:</code></td>
+<td>🐝 <code>:honeybee:</code></td>
+<td>🐜 <code>:ant:</code></td>
+</tr>
+<tr class="even">
+<td>🐞 <code>:beetle:</code></td>
+<td>🐌 <code>:snail:</code></td>
+<td>🐙 <code>:octopus:</code></td>
+</tr>
+<tr class="odd">
+<td>🐠 <code>:tropical_fish:</code></td>
+<td>🐟 <code>:fish:</code></td>
+<td>🐳 <code>:whale:</code></td>
+</tr>
+<tr class="even">
+<td>🐋 <code>:whale2:</code></td>
+<td>🐬 <code>:dolphin:</code></td>
+<td>🐄 <code>:cow2:</code></td>
+</tr>
+<tr class="odd">
+<td>🐏 <code>:ram:</code></td>
+<td>🐀 <code>:rat:</code></td>
+<td>🐃 <code>:water_buffalo:</code></td>
+</tr>
+<tr class="even">
+<td>🐅 <code>:tiger2:</code></td>
+<td>🐇 <code>:rabbit2:</code></td>
+<td>🐉 <code>:dragon:</code></td>
+</tr>
+<tr class="odd">
+<td>🐐 <code>:goat:</code></td>
+<td>🐓 <code>:rooster:</code></td>
+<td>🐕 <code>:dog2:</code></td>
+</tr>
+<tr class="even">
+<td>🐖 <code>:pig2:</code></td>
+<td>🐁 <code>:mouse2:</code></td>
+<td>🐂 <code>:ox:</code></td>
+</tr>
+<tr class="odd">
+<td>🐲 <code>:dragon_face:</code></td>
+<td>🐡 <code>:blowfish:</code></td>
+<td>🐊 <code>:crocodile:</code></td>
+</tr>
+<tr class="even">
+<td>🐪 <code>:dromedary_camel:</code></td>
+<td>🐆 <code>:leopard:</code></td>
+<td>🐈 <code>:cat2:</code></td>
+</tr>
+<tr class="odd">
+<td>🐩 <code>:poodle:</code></td>
+<td>🐾 <code>:paw_prints:</code></td>
+<td>💐 <code>:bouquet:</code></td>
+</tr>
+<tr class="even">
+<td>🌸 <code>:cherry_blossom:</code></td>
+<td>🌷 <code>:tulip:</code></td>
+<td>🍀 <code>:four_leaf_clover:</code></td>
+</tr>
+<tr class="odd">
+<td>🌹 <code>:rose:</code></td>
+<td>🌻 <code>:sunflower:</code></td>
+<td>🌺 <code>:hibiscus:</code></td>
+</tr>
+<tr class="even">
+<td>🍁 <code>:maple_leaf:</code></td>
+<td>🍃 <code>:leaves:</code></td>
+<td>🍂 <code>:fallen_leaf:</code></td>
+</tr>
+<tr class="odd">
+<td>🌿 <code>:herb:</code></td>
+<td>🍄 <code>:mushroom:</code></td>
+<td>🌵 <code>:cactus:</code></td>
+</tr>
+<tr class="even">
+<td>🌴 <code>:palm_tree:</code></td>
+<td>🌲 <code>:evergreen_tree:</code></td>
+<td>🌳 <code>:deciduous_tree:</code></td>
+</tr>
+<tr class="odd">
+<td>🌰 <code>:chestnut:</code></td>
+<td>🌱 <code>:seedling:</code></td>
+<td>🌼 <code>:blossom:</code></td>
+</tr>
+<tr class="even">
+<td>🌾 <code>:ear_of_rice:</code></td>
+<td>🐚 <code>:shell:</code></td>
+<td>🌐 <code>:globe_with_meridians:</code></td>
+</tr>
+<tr class="odd">
+<td>🌞 <code>:sun_with_face:</code></td>
+<td>🌝 <code>:full_moon_with_face:</code></td>
+<td>🌚 <code>:new_moon_with_face:</code></td>
+</tr>
+<tr class="even">
+<td>🌑 <code>:new_moon:</code></td>
+<td>🌒 <code>:waxing_crescent_moon:</code></td>
+<td>🌓 <code>:first_quarter_moon:</code></td>
+</tr>
+<tr class="odd">
+<td>🌔 <code>:waxing_gibbous_moon:</code></td>
+<td>🌕 <code>:full_moon:</code></td>
+<td>🌖 <code>:waning_gibbous_moon:</code></td>
+</tr>
+<tr class="even">
+<td>🌗 <code>:last_quarter_moon:</code></td>
+<td>🌘 <code>:waning_crescent_moon:</code></td>
+<td>🌜 <code>:last_quarter_moon_with_face:</code></td>
+</tr>
+<tr class="odd">
+<td>🌛 <code>:first_quarter_moon_with_face:</code></td>
+<td>🌔 <code>:moon:</code></td>
+<td>🌍 <code>:earth_africa:</code></td>
+</tr>
+<tr class="even">
+<td>🌎 <code>:earth_americas:</code></td>
+<td>🌏 <code>:earth_asia:</code></td>
+<td>🌋 <code>:volcano:</code></td>
+</tr>
+<tr class="odd">
+<td>🌌 <code>:milky_way:</code></td>
+<td>⛅️ <code>:partly_sunny:</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="objects">Objects</h3>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 33%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>🎍 <code>:bamboo:</code></th>
+<th>💝 <code>:gift_heart:</code></th>
+<th>🎎 <code>:dolls:</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🎒 <code>:school_satchel:</code></td>
+<td>🎓 <code>:mortar_board:</code></td>
+<td>🎏 <code>:flags:</code></td>
+</tr>
+<tr class="even">
+<td>🎆 <code>:fireworks:</code></td>
+<td>🎇 <code>:sparkler:</code></td>
+<td>🎐 <code>:wind_chime:</code></td>
+</tr>
+<tr class="odd">
+<td>🎑 <code>:rice_scene:</code></td>
+<td>🎃 <code>:jack_o_lantern:</code></td>
+<td>👻 <code>:ghost:</code></td>
+</tr>
+<tr class="even">
+<td>🎅 <code>:santa:</code></td>
+<td>🎄 <code>:christmas_tree:</code></td>
+<td>🎁 <code>:gift:</code></td>
+</tr>
+<tr class="odd">
+<td>🔔 <code>:bell:</code></td>
+<td>🔕 <code>:no_bell:</code></td>
+<td>🎋 <code>:tanabata_tree:</code></td>
+</tr>
+<tr class="even">
+<td>🎉 <code>:tada:</code></td>
+<td>🎊 <code>:confetti_ball:</code></td>
+<td>🎈 <code>:balloon:</code></td>
+</tr>
+<tr class="odd">
+<td>🔮 <code>:crystal_ball:</code></td>
+<td>💿 <code>:cd:</code></td>
+<td>📀 <code>:dvd:</code></td>
+</tr>
+<tr class="even">
+<td>💾 <code>:floppy_disk:</code></td>
+<td>📷 <code>:camera:</code></td>
+<td>📹 <code>:video_camera:</code></td>
+</tr>
+<tr class="odd">
+<td>🎥 <code>:movie_camera:</code></td>
+<td>💻 <code>:computer:</code></td>
+<td>📺 <code>:tv:</code></td>
+</tr>
+<tr class="even">
+<td>📱 <code>:iphone:</code></td>
+<td>☎️ <code>:phone:</code></td>
+<td>☎️ <code>:telephone:</code></td>
+</tr>
+<tr class="odd">
+<td>📞 <code>:telephone_receiver:</code></td>
+<td>📟 <code>:pager:</code></td>
+<td>📠 <code>:fax:</code></td>
+</tr>
+<tr class="even">
+<td>💽 <code>:minidisc:</code></td>
+<td>📼 <code>:vhs:</code></td>
+<td>🔉 <code>:sound:</code></td>
+</tr>
+<tr class="odd">
+<td>🔈 <code>:speaker:</code></td>
+<td>🔇 <code>:mute:</code></td>
+<td>📢 <code>:loudspeaker:</code></td>
+</tr>
+<tr class="even">
+<td>📣 <code>:mega:</code></td>
+<td>⌛️ <code>:hourglass:</code></td>
+<td>⏳ <code>:hourglass_flowing_sand:</code></td>
+</tr>
+<tr class="odd">
+<td>⏰ <code>:alarm_clock:</code></td>
+<td>⌚️ <code>:watch:</code></td>
+<td>📻 <code>:radio:</code></td>
+</tr>
+<tr class="even">
+<td>📡 <code>:satellite:</code></td>
+<td>➿ <code>:loop:</code></td>
+<td>🔍 <code>:mag:</code></td>
+</tr>
+<tr class="odd">
+<td>🔎 <code>:mag_right:</code></td>
+<td>🔓 <code>:unlock:</code></td>
+<td>🔒 <code>:lock:</code></td>
+</tr>
+<tr class="even">
+<td>🔏 <code>:lock_with_ink_pen:</code></td>
+<td>🔐 <code>:closed_lock_with_key:</code></td>
+<td>🔑 <code>:key:</code></td>
+</tr>
+<tr class="odd">
+<td>💡 <code>:bulb:</code></td>
+<td>🔦 <code>:flashlight:</code></td>
+<td>🔆 <code>:high_brightness:</code></td>
+</tr>
+<tr class="even">
+<td>🔅 <code>:low_brightness:</code></td>
+<td>🔌 <code>:electric_plug:</code></td>
+<td>🔋 <code>:battery:</code></td>
+</tr>
+<tr class="odd">
+<td>📲 <code>:calling:</code></td>
+<td>✉️ <code>:email:</code></td>
+<td>📫 <code>:mailbox:</code></td>
+</tr>
+<tr class="even">
+<td>📮 <code>:postbox:</code></td>
+<td>🛀 <code>:bath:</code></td>
+<td>🛁 <code>:bathtub:</code></td>
+</tr>
+<tr class="odd">
+<td>🚿 <code>:shower:</code></td>
+<td>🚽 <code>:toilet:</code></td>
+<td>🔧 <code>:wrench:</code></td>
+</tr>
+<tr class="even">
+<td>🔩 <code>:nut_and_bolt:</code></td>
+<td>🔨 <code>:hammer:</code></td>
+<td>💺 <code>:seat:</code></td>
+</tr>
+<tr class="odd">
+<td>💰 <code>:moneybag:</code></td>
+<td>💴 <code>:yen:</code></td>
+<td>💵 <code>:dollar:</code></td>
+</tr>
+<tr class="even">
+<td>💷 <code>:pound:</code></td>
+<td>💶 <code>:euro:</code></td>
+<td>💳 <code>:credit_card:</code></td>
+</tr>
+<tr class="odd">
+<td>💸 <code>:money_with_wings:</code></td>
+<td>📧 <code>:e-mail:</code></td>
+<td>📥 <code>:inbox_tray:</code></td>
+</tr>
+<tr class="even">
+<td>📤 <code>:outbox_tray:</code></td>
+<td>✉️ <code>:envelope:</code></td>
+<td>📨 <code>:incoming_envelope:</code></td>
+</tr>
+<tr class="odd">
+<td>📯 <code>:postal_horn:</code></td>
+<td>📪 <code>:mailbox_closed:</code></td>
+<td>📬 <code>:mailbox_with_mail:</code></td>
+</tr>
+<tr class="even">
+<td>📭 <code>:mailbox_with_no_mail:</code></td>
+<td>🚪 <code>:door:</code></td>
+<td>🚬 <code>:smoking:</code></td>
+</tr>
+<tr class="odd">
+<td>💣 <code>:bomb:</code></td>
+<td>🔫 <code>:gun:</code></td>
+<td>🔪 <code>:hocho:</code></td>
+</tr>
+<tr class="even">
+<td>💊 <code>:pill:</code></td>
+<td>💉 <code>:syringe:</code></td>
+<td>📄 <code>:page_facing_up:</code></td>
+</tr>
+<tr class="odd">
+<td>📃 <code>:page_with_curl:</code></td>
+<td>📑 <code>:bookmark_tabs:</code></td>
+<td>📊 <code>:bar_chart:</code></td>
+</tr>
+<tr class="even">
+<td>📈 <code>:chart_with_upwards_trend:</code></td>
+<td>📉 <code>:chart_with_downwards_trend:</code></td>
+<td>📜 <code>:scroll:</code></td>
+</tr>
+<tr class="odd">
+<td>📋 <code>:clipboard:</code></td>
+<td>📆 <code>:calendar:</code></td>
+<td>📅 <code>:date:</code></td>
+</tr>
+<tr class="even">
+<td>📇 <code>:card_index:</code></td>
+<td>📁 <code>:file_folder:</code></td>
+<td>📂 <code>:open_file_folder:</code></td>
+</tr>
+<tr class="odd">
+<td>✂️ <code>:scissors:</code></td>
+<td>📌 <code>:pushpin:</code></td>
+<td>📎 <code>:paperclip:</code></td>
+</tr>
+<tr class="even">
+<td>✒️ <code>:black_nib:</code></td>
+<td>✏️ <code>:pencil2:</code></td>
+<td>📏 <code>:straight_ruler:</code></td>
+</tr>
+<tr class="odd">
+<td>📐 <code>:triangular_ruler:</code></td>
+<td>📕 <code>:closed_book:</code></td>
+<td>📗 <code>:green_book:</code></td>
+</tr>
+<tr class="even">
+<td>📘 <code>:blue_book:</code></td>
+<td>📙 <code>:orange_book:</code></td>
+<td>📓 <code>:notebook:</code></td>
+</tr>
+<tr class="odd">
+<td>📔 <code>:notebook_with_decorative_cover:</code></td>
+<td>📒 <code>:ledger:</code></td>
+<td>📚 <code>:books:</code></td>
+</tr>
+<tr class="even">
+<td>🔖 <code>:bookmark:</code></td>
+<td>📛 <code>:name_badge:</code></td>
+<td>🔬 <code>:microscope:</code></td>
+</tr>
+<tr class="odd">
+<td>🔭 <code>:telescope:</code></td>
+<td>📰 <code>:newspaper:</code></td>
+<td>🏈 <code>:football:</code></td>
+</tr>
+<tr class="even">
+<td>🏀 <code>:basketball:</code></td>
+<td>⚽️ <code>:soccer:</code></td>
+<td>⚾️ <code>:baseball:</code></td>
+</tr>
+<tr class="odd">
+<td>🎾 <code>:tennis:</code></td>
+<td>🎱 <code>:8ball:</code></td>
+<td>🏉 <code>:rugby_football:</code></td>
+</tr>
+<tr class="even">
+<td>🎳 <code>:bowling:</code></td>
+<td>⛳️ <code>:golf:</code></td>
+<td>🚵 <code>:mountain_bicyclist:</code></td>
+</tr>
+<tr class="odd">
+<td>🚴 <code>:bicyclist:</code></td>
+<td>🏇 <code>:horse_racing:</code></td>
+<td>🏂 <code>:snowboarder:</code></td>
+</tr>
+<tr class="even">
+<td>🏊 <code>:swimmer:</code></td>
+<td>🏄 <code>:surfer:</code></td>
+<td>🎿 <code>:ski:</code></td>
+</tr>
+<tr class="odd">
+<td>♠️ <code>:spades:</code></td>
+<td>♥️ <code>:hearts:</code></td>
+<td>♣️ <code>:clubs:</code></td>
+</tr>
+<tr class="even">
+<td>♦️ <code>:diamonds:</code></td>
+<td>💎 <code>:gem:</code></td>
+<td>💍 <code>:ring:</code></td>
+</tr>
+<tr class="odd">
+<td>🏆 <code>:trophy:</code></td>
+<td>🎼 <code>:musical_score:</code></td>
+<td>🎹 <code>:musical_keyboard:</code></td>
+</tr>
+<tr class="even">
+<td>🎻 <code>:violin:</code></td>
+<td>👾 <code>:space_invader:</code></td>
+<td>🎮 <code>:video_game:</code></td>
+</tr>
+<tr class="odd">
+<td>🃏 <code>:black_joker:</code></td>
+<td>🎴 <code>:flower_playing_cards:</code></td>
+<td>🎲 <code>:game_die:</code></td>
+</tr>
+<tr class="even">
+<td>🎯 <code>:dart:</code></td>
+<td>🀄️ <code>:mahjong:</code></td>
+<td>🎬 <code>:clapper:</code></td>
+</tr>
+<tr class="odd">
+<td>📝 <code>:memo:</code></td>
+<td>📝 <code>:pencil:</code></td>
+<td>📖 <code>:book:</code></td>
+</tr>
+<tr class="even">
+<td>🎨 <code>:art:</code></td>
+<td>🎤 <code>:microphone:</code></td>
+<td>🎧 <code>:headphones:</code></td>
+</tr>
+<tr class="odd">
+<td>🎺 <code>:trumpet:</code></td>
+<td>🎷 <code>:saxophone:</code></td>
+<td>🎸 <code>:guitar:</code></td>
+</tr>
+<tr class="even">
+<td>👞 <code>:shoe:</code></td>
+<td>👡 <code>:sandal:</code></td>
+<td>👠 <code>:high_heel:</code></td>
+</tr>
+<tr class="odd">
+<td>💄 <code>:lipstick:</code></td>
+<td>👢 <code>:boot:</code></td>
+<td>👕 <code>:shirt:</code></td>
+</tr>
+<tr class="even">
+<td>👕 <code>:tshirt:</code></td>
+<td>👔 <code>:necktie:</code></td>
+<td>👚 <code>:womans_clothes:</code></td>
+</tr>
+<tr class="odd">
+<td>👗 <code>:dress:</code></td>
+<td>🎽 <code>:running_shirt_with_sash:</code></td>
+<td>👖 <code>:jeans:</code></td>
+</tr>
+<tr class="even">
+<td>👘 <code>:kimono:</code></td>
+<td>👙 <code>:bikini:</code></td>
+<td>🎀 <code>:ribbon:</code></td>
+</tr>
+<tr class="odd">
+<td>🎩 <code>:tophat:</code></td>
+<td>👑 <code>:crown:</code></td>
+<td>👒 <code>:womans_hat:</code></td>
+</tr>
+<tr class="even">
+<td>👞 <code>:mans_shoe:</code></td>
+<td>🌂 <code>:closed_umbrella:</code></td>
+<td>💼 <code>:briefcase:</code></td>
+</tr>
+<tr class="odd">
+<td>👜 <code>:handbag:</code></td>
+<td>👝 <code>:pouch:</code></td>
+<td>👛 <code>:purse:</code></td>
+</tr>
+<tr class="even">
+<td>👓 <code>:eyeglasses:</code></td>
+<td>🎣 <code>:fishing_pole_and_fish:</code></td>
+<td>☕️ <code>:coffee:</code></td>
+</tr>
+<tr class="odd">
+<td>🍵 <code>:tea:</code></td>
+<td>🍶 <code>:sake:</code></td>
+<td>🍼 <code>:baby_bottle:</code></td>
+</tr>
+<tr class="even">
+<td>🍺 <code>:beer:</code></td>
+<td>🍻 <code>:beers:</code></td>
+<td>🍸 <code>:cocktail:</code></td>
+</tr>
+<tr class="odd">
+<td>🍹 <code>:tropical_drink:</code></td>
+<td>🍷 <code>:wine_glass:</code></td>
+<td>🍴 <code>:fork_and_knife:</code></td>
+</tr>
+<tr class="even">
+<td>🍕 <code>:pizza:</code></td>
+<td>🍔 <code>:hamburger:</code></td>
+<td>🍟 <code>:fries:</code></td>
+</tr>
+<tr class="odd">
+<td>🍗 <code>:poultry_leg:</code></td>
+<td>🍖 <code>:meat_on_bone:</code></td>
+<td>🍝 <code>:spaghetti:</code></td>
+</tr>
+<tr class="even">
+<td>🍛 <code>:curry:</code></td>
+<td>🍤 <code>:fried_shrimp:</code></td>
+<td>🍱 <code>:bento:</code></td>
+</tr>
+<tr class="odd">
+<td>🍣 <code>:sushi:</code></td>
+<td>🍥 <code>:fish_cake:</code></td>
+<td>🍙 <code>:rice_ball:</code></td>
+</tr>
+<tr class="even">
+<td>🍘 <code>:rice_cracker:</code></td>
+<td>🍚 <code>:rice:</code></td>
+<td>🍜 <code>:ramen:</code></td>
+</tr>
+<tr class="odd">
+<td>🍲 <code>:stew:</code></td>
+<td>🍢 <code>:oden:</code></td>
+<td>🍡 <code>:dango:</code></td>
+</tr>
+<tr class="even">
+<td>🥚 <code>:egg:</code></td>
+<td>🍞 <code>:bread:</code></td>
+<td>🍩 <code>:doughnut:</code></td>
+</tr>
+<tr class="odd">
+<td>🍮 <code>:custard:</code></td>
+<td>🍦 <code>:icecream:</code></td>
+<td>🍨 <code>:ice_cream:</code></td>
+</tr>
+<tr class="even">
+<td>🍧 <code>:shaved_ice:</code></td>
+<td>🎂 <code>:birthday:</code></td>
+<td>🍰 <code>:cake:</code></td>
+</tr>
+<tr class="odd">
+<td>🍪 <code>:cookie:</code></td>
+<td>🍫 <code>:chocolate_bar:</code></td>
+<td>🍬 <code>:candy:</code></td>
+</tr>
+<tr class="even">
+<td>🍭 <code>:lollipop:</code></td>
+<td>🍯 <code>:honey_pot:</code></td>
+<td>🍎 <code>:apple:</code></td>
+</tr>
+<tr class="odd">
+<td>🍏 <code>:green_apple:</code></td>
+<td>🍊 <code>:tangerine:</code></td>
+<td>🍋 <code>:lemon:</code></td>
+</tr>
+<tr class="even">
+<td>🍒 <code>:cherries:</code></td>
+<td>🍇 <code>:grapes:</code></td>
+<td>🍉 <code>:watermelon:</code></td>
+</tr>
+<tr class="odd">
+<td>🍓 <code>:strawberry:</code></td>
+<td>🍑 <code>:peach:</code></td>
+<td>🍈 <code>:melon:</code></td>
+</tr>
+<tr class="even">
+<td>🍌 <code>:banana:</code></td>
+<td>🍐 <code>:pear:</code></td>
+<td>🍍 <code>:pineapple:</code></td>
+</tr>
+<tr class="odd">
+<td>🍠 <code>:sweet_potato:</code></td>
+<td>🍆 <code>:eggplant:</code></td>
+<td>🍅 <code>:tomato:</code></td>
+</tr>
+<tr class="even">
+<td>🌽 <code>:corn:</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="places">Places</h3>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 35%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>🏠 <code>:house:</code></th>
+<th>🏡 <code>:house_with_garden:</code></th>
+<th>🏫 <code>:school:</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🏢 <code>:office:</code></td>
+<td>🏣 <code>:post_office:</code></td>
+<td>🏥 <code>:hospital:</code></td>
+</tr>
+<tr class="even">
+<td>🏦 <code>:bank:</code></td>
+<td>🏪 <code>:convenience_store:</code></td>
+<td>🏩 <code>:love_hotel:</code></td>
+</tr>
+<tr class="odd">
+<td>🏨 <code>:hotel:</code></td>
+<td>💒 <code>:wedding:</code></td>
+<td>⛪️ <code>:church:</code></td>
+</tr>
+<tr class="even">
+<td>🏬 <code>:department_store:</code></td>
+<td>🏤 <code>:european_post_office:</code></td>
+<td>🌇 <code>:city_sunrise:</code></td>
+</tr>
+<tr class="odd">
+<td>🌆 <code>:city_sunset:</code></td>
+<td>🏯 <code>:japanese_castle:</code></td>
+<td>🏰 <code>:european_castle:</code></td>
+</tr>
+<tr class="even">
+<td>⛺️ <code>:tent:</code></td>
+<td>🏭 <code>:factory:</code></td>
+<td>🗼 <code>:tokyo_tower:</code></td>
+</tr>
+<tr class="odd">
+<td>🗾 <code>:japan:</code></td>
+<td>🗻 <code>:mount_fuji:</code></td>
+<td>🌄 <code>:sunrise_over_mountains:</code></td>
+</tr>
+<tr class="even">
+<td>🌅 <code>:sunrise:</code></td>
+<td>🌠 <code>:stars:</code></td>
+<td>🗽 <code>:statue_of_liberty:</code></td>
+</tr>
+<tr class="odd">
+<td>🌉 <code>:bridge_at_night:</code></td>
+<td>🎠 <code>:carousel_horse:</code></td>
+<td>🌈 <code>:rainbow:</code></td>
+</tr>
+<tr class="even">
+<td>🎡 <code>:ferris_wheel:</code></td>
+<td>⛲️ <code>:fountain:</code></td>
+<td>🎢 <code>:roller_coaster:</code></td>
+</tr>
+<tr class="odd">
+<td>🚢 <code>:ship:</code></td>
+<td>🚤 <code>:speedboat:</code></td>
+<td>⛵️ <code>:boat:</code></td>
+</tr>
+<tr class="even">
+<td>⛵️ <code>:sailboat:</code></td>
+<td>🚣 <code>:rowboat:</code></td>
+<td>⚓️ <code>:anchor:</code></td>
+</tr>
+<tr class="odd">
+<td>🚀 <code>:rocket:</code></td>
+<td>✈️ <code>:airplane:</code></td>
+<td>🚁 <code>:helicopter:</code></td>
+</tr>
+<tr class="even">
+<td>🚂 <code>:steam_locomotive:</code></td>
+<td>🚊 <code>:tram:</code></td>
+<td>🚞 <code>:mountain_railway:</code></td>
+</tr>
+<tr class="odd">
+<td>🚲 <code>:bike:</code></td>
+<td>🚡 <code>:aerial_tramway:</code></td>
+<td>🚟 <code>:suspension_railway:</code></td>
+</tr>
+<tr class="even">
+<td>🚠 <code>:mountain_cableway:</code></td>
+<td>🚜 <code>:tractor:</code></td>
+<td>🚙 <code>:blue_car:</code></td>
+</tr>
+<tr class="odd">
+<td>🚘 <code>:oncoming_automobile:</code></td>
+<td>🚗 <code>:car:</code></td>
+<td>🚗 <code>:red_car:</code></td>
+</tr>
+<tr class="even">
+<td>🚕 <code>:taxi:</code></td>
+<td>🚖 <code>:oncoming_taxi:</code></td>
+<td>🚛 <code>:articulated_lorry:</code></td>
+</tr>
+<tr class="odd">
+<td>🚌 <code>:bus:</code></td>
+<td>🚍 <code>:oncoming_bus:</code></td>
+<td>🚨 <code>:rotating_light:</code></td>
+</tr>
+<tr class="even">
+<td>🚓 <code>:police_car:</code></td>
+<td>🚔 <code>:oncoming_police_car:</code></td>
+<td>🚒 <code>:fire_engine:</code></td>
+</tr>
+<tr class="odd">
+<td>🚑 <code>:ambulance:</code></td>
+<td>🚐 <code>:minibus:</code></td>
+<td>🚚 <code>:truck:</code></td>
+</tr>
+<tr class="even">
+<td>🚋 <code>:train:</code></td>
+<td>🚉 <code>:station:</code></td>
+<td>🚆 <code>:train2:</code></td>
+</tr>
+<tr class="odd">
+<td>🚅 <code>:bullettrain_front:</code></td>
+<td>🚄 <code>:bullettrain_side:</code></td>
+<td>🚈 <code>:light_rail:</code></td>
+</tr>
+<tr class="even">
+<td>🚝 <code>:monorail:</code></td>
+<td>🚃 <code>:railway_car:</code></td>
+<td>🚎 <code>:trolleybus:</code></td>
+</tr>
+<tr class="odd">
+<td>🎫 <code>:ticket:</code></td>
+<td>⛽️ <code>:fuelpump:</code></td>
+<td>🚦 <code>:vertical_traffic_light:</code></td>
+</tr>
+<tr class="even">
+<td>🚥 <code>:traffic_light:</code></td>
+<td>⚠️ <code>:warning:</code></td>
+<td>🚧 <code>:construction:</code></td>
+</tr>
+<tr class="odd">
+<td>🔰 <code>:beginner:</code></td>
+<td>🏧 <code>:atm:</code></td>
+<td>🎰 <code>:slot_machine:</code></td>
+</tr>
+<tr class="even">
+<td>🚏 <code>:busstop:</code></td>
+<td>💈 <code>:barber:</code></td>
+<td>♨️ <code>:hotsprings:</code></td>
+</tr>
+<tr class="odd">
+<td>🏁 <code>:checkered_flag:</code></td>
+<td>🎌 <code>:crossed_flags:</code></td>
+<td>🏮 <code>:izakaya_lantern:</code></td>
+</tr>
+<tr class="even">
+<td>🗿 <code>:moyai:</code></td>
+<td>🎪 <code>:circus_tent:</code></td>
+<td>🎭 <code>:performing_arts:</code></td>
+</tr>
+<tr class="odd">
+<td>📍 <code>:round_pushpin:</code></td>
+<td>🚩 <code>:triangular_flag_on_post:</code></td>
+<td>🇯🇵 <code>:jp:</code></td>
+</tr>
+<tr class="even">
+<td>🇰🇷 <code>:kr:</code></td>
+<td>🇨🇳 <code>:cn:</code></td>
+<td>🇺🇸 <code>:us:</code></td>
+</tr>
+<tr class="odd">
+<td>🇫🇷 <code>:fr:</code></td>
+<td>🇪🇸 <code>:es:</code></td>
+<td>🇮🇹 <code>:it:</code></td>
+</tr>
+<tr class="even">
+<td>🇷🇺 <code>:ru:</code></td>
+<td>🇬🇧 <code>:gb:</code></td>
+<td>🇬🇧 <code>:uk:</code></td>
+</tr>
+<tr class="odd">
+<td>🇩🇪 <code>:de:</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="symbols">Symbols</h3>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 32%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>1️⃣ <code>:one:</code></th>
+<th>2️⃣ <code>:two:</code></th>
+<th>3️⃣ <code>:three:</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4️⃣ <code>:four:</code></td>
+<td>5️⃣ <code>:five:</code></td>
+<td>6️⃣ <code>:six:</code></td>
+</tr>
+<tr class="even">
+<td>7️⃣ <code>:seven:</code></td>
+<td>8️⃣ <code>:eight:</code></td>
+<td>9️⃣ <code>:nine:</code></td>
+</tr>
+<tr class="odd">
+<td>🔟 <code>:keycap_ten:</code></td>
+<td>🔢 <code>:1234:</code></td>
+<td>0️⃣ <code>:zero:</code></td>
+</tr>
+<tr class="even">
+<td>#️⃣ <code>:hash:</code></td>
+<td>🔣 <code>:symbols:</code></td>
+<td>◀️ <code>:arrow_backward:</code></td>
+</tr>
+<tr class="odd">
+<td>⬇️ <code>:arrow_down:</code></td>
+<td>▶️ <code>:arrow_forward:</code></td>
+<td>⬅️ <code>:arrow_left:</code></td>
+</tr>
+<tr class="even">
+<td>🔠 <code>:capital_abcd:</code></td>
+<td>🔡 <code>:abcd:</code></td>
+<td>🔤 <code>:abc:</code></td>
+</tr>
+<tr class="odd">
+<td>↙️ <code>:arrow_lower_left:</code></td>
+<td>↘️ <code>:arrow_lower_right:</code></td>
+<td>➡️ <code>:arrow_right:</code></td>
+</tr>
+<tr class="even">
+<td>⬆️ <code>:arrow_up:</code></td>
+<td>↖️ <code>:arrow_upper_left:</code></td>
+<td>↗️ <code>:arrow_upper_right:</code></td>
+</tr>
+<tr class="odd">
+<td>⏬ <code>:arrow_double_down:</code></td>
+<td>⏫ <code>:arrow_double_up:</code></td>
+<td>🔽 <code>:arrow_down_small:</code></td>
+</tr>
+<tr class="even">
+<td>⤵️ <code>:arrow_heading_down:</code></td>
+<td>⤴️ <code>:arrow_heading_up:</code></td>
+<td>↩︎️<code>:leftwards_arrow_with_hook:</code></td>
+</tr>
+<tr class="odd">
+<td>↪️ <code>:arrow_right_hook:</code></td>
+<td>↔︎️ <code>:left_right_arrow:</code></td>
+<td>↕️ <code>:arrow_up_down:</code></td>
+</tr>
+<tr class="even">
+<td>🔼 <code>:arrow_up_small:</code></td>
+<td>🔃 <code>:arrows_clockwise:</code></td>
+<td>🔄 <code>:arrows_counterclockwise:</code></td>
+</tr>
+<tr class="odd">
+<td>⏪ <code>:rewind:</code></td>
+<td>⏩ <code>:fast_forward:</code></td>
+<td>ℹ️ <code>:information_source:</code></td>
+</tr>
+<tr class="even">
+<td>🆗 <code>:ok:</code></td>
+<td>🔀 <code>:twisted_rightwards_arrows:</code></td>
+<td>🔁 <code>:repeat:</code></td>
+</tr>
+<tr class="odd">
+<td>🔂 <code>:repeat_one:</code></td>
+<td>🆕 <code>:new:</code></td>
+<td>🔝 <code>:top:</code></td>
+</tr>
+<tr class="even">
+<td>🆙 <code>:up:</code></td>
+<td>🆒 <code>:cool:</code></td>
+<td>🆓 <code>:free:</code></td>
+</tr>
+<tr class="odd">
+<td>🆖 <code>:ng:</code></td>
+<td>🎦 <code>:cinema:</code></td>
+<td>🈁 <code>:koko:</code></td>
+</tr>
+<tr class="even">
+<td>📶 <code>:signal_strength:</code></td>
+<td>🈹 <code>:u5272:</code></td>
+<td>🈴 <code>:u5408:</code></td>
+</tr>
+<tr class="odd">
+<td>🈺 <code>:u55b6:</code></td>
+<td>🈯️ <code>:u6307:</code></td>
+<td>🈷️ <code>:u6708:</code></td>
+</tr>
+<tr class="even">
+<td>🈶 <code>:u6709:</code></td>
+<td>🈵 <code>:u6e80:</code></td>
+<td>🈚️ <code>:u7121:</code></td>
+</tr>
+<tr class="odd">
+<td>🈸 <code>:u7533:</code></td>
+<td>🈳 <code>:u7a7a:</code></td>
+<td>🈲 <code>:u7981:</code></td>
+</tr>
+<tr class="even">
+<td>🈂️ <code>:sa:</code></td>
+<td>🚻 <code>:restroom:</code></td>
+<td>🚹 <code>:mens:</code></td>
+</tr>
+<tr class="odd">
+<td>🚺 <code>:womens:</code></td>
+<td>🚼 <code>:baby_symbol:</code></td>
+<td>🚭 <code>:no_smoking:</code></td>
+</tr>
+<tr class="even">
+<td>🅿️ <code>:parking:</code></td>
+<td>♿️ <code>:wheelchair:</code></td>
+<td>🚇 <code>:metro:</code></td>
+</tr>
+<tr class="odd">
+<td>🛄 <code>:baggage_claim:</code></td>
+<td>🉑 <code>:accept:</code></td>
+<td>🚾 <code>:wc:</code></td>
+</tr>
+<tr class="even">
+<td>🚰 <code>:potable_water:</code></td>
+<td>🚮 <code>:put_litter_in_its_place:</code></td>
+<td>㊙️ <code>:secret:</code></td>
+</tr>
+<tr class="odd">
+<td>㊗️ <code>:congratulations:</code></td>
+<td>Ⓜ️ <code>:m:</code></td>
+<td>🛂 <code>:passport_control:</code></td>
+</tr>
+<tr class="even">
+<td>🛅 <code>:left_luggage:</code></td>
+<td>🛃 <code>:customs:</code></td>
+<td>🉐 <code>:ideograph_advantage:</code></td>
+</tr>
+<tr class="odd">
+<td>🆑 <code>:cl:</code></td>
+<td>🆘 <code>:sos:</code></td>
+<td>🆔 <code>:id:</code></td>
+</tr>
+<tr class="even">
+<td>🚫 <code>:no_entry_sign:</code></td>
+<td>🔞 <code>:underage:</code></td>
+<td>📵 <code>:no_mobile_phones:</code></td>
+</tr>
+<tr class="odd">
+<td>🚯 <code>:do_not_litter:</code></td>
+<td>🚱 <code>:non-potable_water:</code></td>
+<td>🚳 <code>:no_bicycles:</code></td>
+</tr>
+<tr class="even">
+<td>🚷 <code>:no_pedestrians:</code></td>
+<td>🚸 <code>:children_crossing:</code></td>
+<td>⛔️ <code>:no_entry:</code></td>
+</tr>
+<tr class="odd">
+<td>✳️ <code>:eight_spoked_asterisk:</code></td>
+<td>✴️ <code>:eight_pointed_black_star:</code></td>
+<td>💟 <code>:heart_decoration:</code></td>
+</tr>
+<tr class="even">
+<td>🆚 <code>:vs:</code></td>
+<td>📳 <code>:vibration_mode:</code></td>
+<td>📴 <code>:mobile_phone_off:</code></td>
+</tr>
+<tr class="odd">
+<td>💹 <code>:chart:</code></td>
+<td>💱 <code>:currency_exchange:</code></td>
+<td>♈️ <code>:aries:</code></td>
+</tr>
+<tr class="even">
+<td>♉️ <code>:taurus:</code></td>
+<td>♊️ <code>:gemini:</code></td>
+<td>♋️ <code>:cancer:</code></td>
+</tr>
+<tr class="odd">
+<td>♌️ <code>:leo:</code></td>
+<td>♍️ <code>:virgo:</code></td>
+<td>♎️ <code>:libra:</code></td>
+</tr>
+<tr class="even">
+<td>♏️ <code>:scorpius:</code></td>
+<td>♐️ <code>:sagittarius:</code></td>
+<td>♑️ <code>:capricorn:</code></td>
+</tr>
+<tr class="odd">
+<td>♒️ <code>:aquarius:</code></td>
+<td>♓️ <code>:pisces:</code></td>
+<td>⛎ <code>:ophiuchus:</code></td>
+</tr>
+<tr class="even">
+<td>🔯 <code>:six_pointed_star:</code></td>
+<td>❎<code>:negative_squared_cross_mark:</code></td>
+<td>🅰️ <code>:a:</code></td>
+</tr>
+<tr class="odd">
+<td>🅱️ <code>:b:</code></td>
+<td>🆎 <code>:ab:</code></td>
+<td>🅾️ <code>:o2:</code></td>
+</tr>
+<tr class="even">
+<td>💠<code>:diamond_shape_with_a_dot_inside:</code></td>
+<td>♻️ <code>:recycle:</code></td>
+<td>🔚 <code>:end:</code></td>
+</tr>
+<tr class="odd">
+<td>🔛 <code>:on:</code></td>
+<td>🔜 <code>:soon:</code></td>
+<td>🕐 <code>:clock1:</code></td>
+</tr>
+<tr class="even">
+<td>🕜 <code>:clock130:</code></td>
+<td>🕙 <code>:clock10:</code></td>
+<td>🕥 <code>:clock1030:</code></td>
+</tr>
+<tr class="odd">
+<td>🕚 <code>:clock11:</code></td>
+<td>🕦 <code>:clock1130:</code></td>
+<td>🕛 <code>:clock12:</code></td>
+</tr>
+<tr class="even">
+<td>🕧 <code>:clock1230:</code></td>
+<td>🕑 <code>:clock2:</code></td>
+<td>🕝 <code>:clock230:</code></td>
+</tr>
+<tr class="odd">
+<td>🕒 <code>:clock3:</code></td>
+<td>🕞 <code>:clock330:</code></td>
+<td>🕓 <code>:clock4:</code></td>
+</tr>
+<tr class="even">
+<td>🕟 <code>:clock430:</code></td>
+<td>🕔 <code>:clock5:</code></td>
+<td>🕠 <code>:clock530:</code></td>
+</tr>
+<tr class="odd">
+<td>🕕 <code>:clock6:</code></td>
+<td>🕡 <code>:clock630:</code></td>
+<td>🕖 <code>:clock7:</code></td>
+</tr>
+<tr class="even">
+<td>🕢 <code>:clock730:</code></td>
+<td>🕗 <code>:clock8:</code></td>
+<td>🕣 <code>:clock830:</code></td>
+</tr>
+<tr class="odd">
+<td>🕘 <code>:clock9:</code></td>
+<td>🕤 <code>:clock930:</code></td>
+<td>💲 <code>:heavy_dollar_sign:</code></td>
+</tr>
+<tr class="even">
+<td>©️ <code>:copyright:</code></td>
+<td>®️ <code>:registered:</code></td>
+<td>™️ <code>:tm:</code></td>
+</tr>
+<tr class="odd">
+<td>❌ <code>:x:</code></td>
+<td>❗️ <code>:heavy_exclamation_mark:</code></td>
+<td>‼️ <code>:bangbang:</code></td>
+</tr>
+<tr class="even">
+<td>⁉️ <code>:interrobang:</code></td>
+<td>⭕️ <code>:o:</code></td>
+<td>✖️ <code>:heavy_multiplication_x:</code></td>
+</tr>
+<tr class="odd">
+<td>➕ <code>:heavy_plus_sign:</code></td>
+<td>➖ <code>:heavy_minus_sign:</code></td>
+<td>➗ <code>:heavy_division_sign:</code></td>
+</tr>
+<tr class="even">
+<td>💮 <code>:white_flower:</code></td>
+<td>💯 <code>:100:</code></td>
+<td>✔️ <code>:heavy_check_mark:</code></td>
+</tr>
+<tr class="odd">
+<td>☑️ <code>:ballot_box_with_check:</code></td>
+<td>🔘 <code>:radio_button:</code></td>
+<td>🔗 <code>:link:</code></td>
+</tr>
+<tr class="even">
+<td>➰ <code>:curly_loop:</code></td>
+<td>〰️ <code>:wavy_dash:</code></td>
+<td>〽️ <code>:part_alternation_mark:</code></td>
+</tr>
+<tr class="odd">
+<td>🔱 <code>:trident:</code></td>
+<td>:black_square: <code>:black_square:</code></td>
+<td>:white_square: <code>:white_square:</code></td>
+</tr>
+<tr class="even">
+<td>✅ <code>:white_check_mark:</code></td>
+<td>🔲 <code>:black_square_button:</code></td>
+<td>🔳 <code>:white_square_button:</code></td>
+</tr>
+<tr class="odd">
+<td>⚫️ <code>:black_circle:</code></td>
+<td>⚪️ <code>:white_circle:</code></td>
+<td>🔴 <code>:red_circle:</code></td>
+</tr>
+<tr class="even">
+<td>🔵 <code>:large_blue_circle:</code></td>
+<td>🔷 <code>:large_blue_diamond:</code></td>
+<td>🔶 <code>:large_orange_diamond:</code></td>
+</tr>
+<tr class="odd">
+<td>🔹 <code>:small_blue_diamond:</code></td>
+<td>🔸 <code>:small_orange_diamond:</code></td>
+<td>🔺 <code>:small_red_triangle:</code></td>
+</tr>
+<tr class="even">
+<td>🔻 <code>:small_red_triangle_down:</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2023/09/13/pandoc_word_to_md/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>使用pandoc转换word到markdown</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/08/26/Scrapy%E6%B5%81%E7%A8%8B/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      Scrapy框架爬虫流程
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://microdaniel.github.io/">Daniel</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg" />
+                  <a class="foot-link"
+                     href="mailto:singforeal@163.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/sinsinsing">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-bilibili.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://space.bilibili.com/356307646">哔哩哔哩</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-xhs.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5b6ea92be85cb900013df89f">小红书</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg" />
+                <a class="foot-link" href="mailto:singforeal@163.com">singforeal@163.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">Space | sinG</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+      <script src="https://unpkg.com/js-polyfills@0.1.43/es6.js"></script>
+      <script id="MathJax-script"
+              async
+              src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    
+    
+  
+
+  </body>
+</html>

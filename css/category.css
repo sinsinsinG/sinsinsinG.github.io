@@ -32,6 +32,8 @@
   align-items: center;
   justify-content: center;
   font-size: 32px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 .wall-category-description {
   font-family: sourceHanSerif;
@@ -49,7 +51,7 @@
 }
 .wall-category-tags .tag {
   display: inline-block;
-  border: 1px solid #eee;
+  border: 1px solid #000;
   border-radius: 50%;
   padding: 8px 10px;
   box-sizing: border-box;
