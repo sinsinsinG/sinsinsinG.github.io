@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        数据库Chap2关系模型+Chap6关系代数 | Space | sinG
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/life">LIFE</a>
+            
+              <a class="nav-menu-item" href="/math">MATH</a>
+            
+              <a class="nav-menu-item" href="/cs">CS</a>
+            
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner--toc">
+      <div class="post-content__head">
+        <div class="post-title">数据库Chap2关系模型+Chap6关系代数</div>
+        <div class="post-info">
+          
+  <a href="/tags/sql/" class="post-tag">#sql</a>
+
+
+          <span class="post-date">2023-11-20</span>
+        </div>
+      </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#chap2-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">Chap2 关系模型介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="post-toc-text">关系数据结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="post-toc-text">关系数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">关系模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E6%9C%AF%E8%AF%AD"><span class="post-toc-text">关系模型术语</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C"><span class="post-toc-text">关系操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80"><span class="post-toc-text">关系数据库语言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97"><span class="post-toc-text">关系运算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sql"><span class="post-toc-text">SQL</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="post-toc-text">关系完整性约束</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#chap6.1-%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0"><span class="post-toc-text">Chap6.1 关系代数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="post-toc-text">6.1.1 基本运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%89%E6%8B%A9sigma"><span class="post-toc-text">选择\(\sigma\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%95%E5%BD%B1pi"><span class="post-toc-text">投影\(\Pi\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B9%B6cup"><span class="post-toc-text">并\(\cup\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B7%AE-"><span class="post-toc-text">差\(-\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF-times"><span class="post-toc-text">笛卡儿积 \(\times\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8Drho"><span class="post-toc-text">重命名\(\rho\)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96%E5%AE%9A%E4%B9%89"><span class="post-toc-text">6.1.2 关系代数的形式化定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%84%E5%8A%A0%E7%9A%84%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97"><span class="post-toc-text">6.1.3 附加的关系代数运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%A4cap"><span class="post-toc-text">交\(\cap\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5bowtie"><span class="post-toc-text">连接\(\bowtie\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B5%8B%E5%80%BCleftarrow"><span class="post-toc-text">赋值\(\leftarrow\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%99%A4div"><span class="post-toc-text">除\(\div\)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%A9%E5%B1%95%E7%9A%84%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97"><span class="post-toc-text">6.1.4 扩展的关系代数运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8E%BB%E9%87%8Ddelta"><span class="post-toc-text">去重\(\delta\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B9%BF%E4%B9%89%E6%8A%95%E5%BD%B1pi"><span class="post-toc-text">广义投影\(\Pi\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%81%9A%E9%9B%86mathcalg"><span class="post-toc-text">聚集\(\mathcal{G}\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E7%BB%84mathcalg_count_distinct"><span class="post-toc-text">分组\(\mathcal{G}_{count\_distinct}\)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%92%E5%BA%8Ftau"><span class="post-toc-text">排序\(\tau\)</span></a></li></ol></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <p><strong>知识框架</strong></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919140635936.png" /></p>
+<h1 id="chap2-关系模型介绍">Chap2 关系模型介绍</h1>
+<h2 id="关系数据结构">关系数据结构</h2>
+<h3 id="关系数据库">关系数据库</h3>
+<ul>
+<li><strong>关系数据库</strong>
+<ul>
+<li>关系数据库是表的集合：
+<ul>
+<li>每个表有唯一的名字</li>
+<li>每个表可以有多个列</li>
+<li>每个列有唯一的名字</li>
+<li>表中的一行代表的是一系列值之间的联系，即表是关系的集合</li>
+</ul></li>
+<li><strong>表</strong>的概念和数学上<strong>关系</strong>的概念密切相关，这正是关系数据库名称的由来</li>
+</ul></li>
+<li>常见的关系数据库
+<ul>
+<li>Oracle 、Microsoft SQL Server、IBM DB2、 GaussDB、MySQL、SQLite</li>
+</ul></li>
+<li><strong>关系数据库</strong>采用<strong>关系模型</strong>作为数据的组织方式</li>
+</ul>
+<h3 id="关系模型">关系模型</h3>
+<p>关系模型的形象化类比：</p>
+<table>
+<thead>
+<tr class="header">
+<th>程序设计语言</th>
+<th>关系模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>- 数据类型</td>
+<td>- 关系模式</td>
+</tr>
+<tr class="even">
+<td>- 变量</td>
+<td>- 关系</td>
+</tr>
+<tr class="odd">
+<td>- 值</td>
+<td>- 关系实例</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关系模型术语">关系模型术语</h3>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 82%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>关系模型术语</th>
+<th>一般表格术语</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>关系模式</td>
+<td>表头（表格列名的集合）</td>
+</tr>
+<tr class="even">
+<td>关系名</td>
+<td>表名</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>关系relation</td>
+<td>（二维）表</td>
+</tr>
+<tr class="odd">
+<td><strong>元组tuple</strong></td>
+<td>行/记录</td>
+</tr>
+<tr class="even">
+<td>属性attribute</td>
+<td>列；属性中的值都应该来自同一个域</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>属性名</td>
+<td>列名</td>
+</tr>
+<tr class="odd">
+<td>属性值</td>
+<td>列值</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>分量</strong></td>
+<td>一条记录中的一个列值，元组的一个属性值</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>域</td>
+<td>关系的每个属性允许取值的范围</td>
+</tr>
+<tr class="even">
+<td><strong>超键</strong></td>
+<td>能够<strong>唯一标识</strong>关系中的元组（每个元组都有一个唯一的标识符）的<strong>一个</strong>或<strong>多个</strong>属性集合。</td>
+</tr>
+<tr class="odd">
+<td><strong>候选键</strong></td>
+<td>不含有多余属性的超键：一个超键去除任意一个属性就不再是超键了。唯一标识关系（表）中的每个元组的属性或属性集合。<strong>候选键中的每个属性都是必需的，不能去掉其中任何一个属性。</strong></td>
+</tr>
+<tr class="even">
+<td>主属性</td>
+<td><strong>候选键的各个属性称为主属性，</strong>不包含在任何侯选键中的属性称为<strong>非主属性</strong>。</td>
+</tr>
+<tr class="odd">
+<td><strong>复合键</strong></td>
+<td>在某些情况，需要同时使用<u>两个或者两个以上</u>的属性才能<strong>唯一标识</strong>不同的元组，这种由多个属性所构成的键称为<strong>复合键</strong>。（当单个属性都不能唯一的标识不同元组时）</td>
+</tr>
+<tr class="even">
+<td>主键</td>
+<td>一个关系可能有一个或多个候选键，在定义关系数据库关系表的时候，一般选择<strong>一个最合适的候选键</strong>作为<strong>主键</strong>，主键的不同取值必须<strong>唯一标识</strong>不同的元组。</td>
+</tr>
+<tr class="odd">
+<td>外键</td>
+<td>SC关系的Sno和Cno属性分别是Student和Course关系的主键，这种一个关系模式R1中的属性是另一个关系模式R2的主键，这样的属性在R1上称作参照R2的外键，即<strong>外键</strong>。<br><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919143228314.png"
+alt="image-20230919143228314" /></td>
+</tr>
+<tr class="even">
+<td>空值</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Student关系的5个属性中，(Sno,
+Sname)是一个超键，但不是候选键；Sno是候选键；</li>
+<li>如果Sname属性的取值是唯一的，则它也是候选键。</li>
+<li>Student关系主属性是Sno。</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 19%" />
+<col style="width: 21%" />
+<col style="width: 18%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Sno</strong> <strong>（学号）</strong></th>
+<th><strong>Sname</strong> <strong>（姓名）</strong></th>
+<th><strong>Sgender</strong> <strong>（性别）</strong></th>
+<th><strong>Sage</strong> <strong>（年龄）</strong></th>
+<th><strong>Sdept</strong> <strong>（所在系）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2021310721</td>
+<td>李博</td>
+<td>男</td>
+<td>17</td>
+<td>CS</td>
+</tr>
+<tr class="even">
+<td>2021310722</td>
+<td>赵宇</td>
+<td>男</td>
+<td>19</td>
+<td>CS</td>
+</tr>
+<tr class="odd">
+<td>2021310723</td>
+<td>张敏</td>
+<td>女</td>
+<td>18</td>
+<td>CS</td>
+</tr>
+<tr class="even">
+<td>2021310724</td>
+<td>王勇</td>
+<td>男</td>
+<td>18</td>
+<td>MA</td>
+</tr>
+<tr class="odd">
+<td>2021310725</td>
+<td>刘佳</td>
+<td>女</td>
+<td>17</td>
+<td>MA</td>
+</tr>
+</tbody>
+</table>
+<p>关系模式</p>
+<ul>
+<li>关系模式是对关系的描述，由关系名和其属性集合组成，是相对不变的。记做R(A<sub>1</sub>,
+A<sub>2</sub>, ⋯, A<sub>n</sub>)。</li>
+<li>Student关系可以写为Student(Sno, Sname, Sgender, Sage, Sdept)</li>
+</ul>
+<p>关系实例</p>
+<ul>
+<li>关系实例是关系元组集合，表示特定实例，会根据业务状态发生变化。</li>
+<li>Student关系的实例有5个元组，对应5个学生。如果有新学生，则其元组数会增加。</li>
+</ul>
+<h2 id="关系操作">关系操作</h2>
+<ul>
+<li>增</li>
+<li>删</li>
+<li>改</li>
+<li>查 --- 核心</li>
+</ul>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114163536875.png" /></p>
+<h3 id="关系数据库语言">关系数据库语言</h3>
+<ul>
+<li>关系运算</li>
+<li>SQL</li>
+</ul>
+<h4 id="关系运算">关系运算</h4>
+<ul>
+<li>关系代数</li>
+<li>关系演算
+<ul>
+<li>元组关系演算</li>
+<li>域关系演算</li>
+</ul></li>
+</ul>
+<p><img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114161803710.png" alt="image-20231114161803710" style="zoom: 25%;" /></p>
+<h5 id="关系代数">关系代数</h5>
+<p>具体在后面</p>
+<h5 id="关系演算">关系演算</h5>
+<h6 id="元组关系演算">元组关系演算</h6>
+<p>元组关系演算表达式的定义为：<img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231115002547542.png" alt="image-20231115002547542" style="zoom:25%;" /></p>
+<ul>
+<li>上述表达式返回所有使得公式P为真的元组t的集合</li>
+<li>P由原子公式组成，原子公式可以是以下形式之一：
+<ul>
+<li>（1）t∈R，其中t是元组变量，R是关系；</li>
+<li>（2）t[x] Θ
+s[y]，其中t和s是元组变量，x是t所属的关系的属性，y是s所属的关系的属性，Θ是比较运算符；</li>
+<li>（3）t[x] Θ c，其中t，x，Θ同上，c是属性x的域中的常量。</li>
+</ul></li>
+</ul>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231115002705161.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231115002838112.png" /></p>
+<h6 id="域关系演算">域关系演算</h6>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231115003222566.png" /><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231115003234567.png" /></p>
+<h4 id="sql">SQL</h4>
+<h2 id="关系完整性约束">关系完整性约束</h2>
+<ul>
+<li>实体完整性约束（entity integrity constraint）
+<ul>
+<li><strong>实体完整性约束主要是通过在关系表中实施主键取值约束</strong>，来保证关系中的<strong>每个元组可以被唯一识别</strong>。</li>
+<li>如果键K是关系R的主键，则K不能取空值；</li>
+<li>如果关系R的主键K是复合键，则构成复合键的多个属性均不能取空值；</li>
+<li>如果键K是关系R的主键，则K的取值不能在R中重复。</li>
+<li>检查规则：</li>
+<li>检查关系R的主键K的值是否唯一，如果不唯一或者为空，则拒绝插入或者修改元组数据；</li>
+<li>如果关系R的主键K是复合键，检查K的各个属性是否为空。如果有一个为空或者复合键不唯一，则拒绝插入或修改元组数据。</li>
+</ul></li>
+<li>参照完整性约束（referential integrity constraint）
+<ul>
+<li>指代<strong>实体集之间关系的约束</strong>。被参照实体：先插入、后删除</li>
+<li>删除规则：如果一个实体E（某所学校）被另一个实体F（学生）引用，可以禁止删除该实体E（学校，删除学校必须同时删除属于该学校的所有学生）。（<strong>被参照实体后删除</strong>）</li>
+<li>插入规则：如果一个实体F（学生）引用了另一个实体E（学校），那么实体E（学校，学校必须已经存者学校实体集中）必须存在数据库中。（<strong>被参照实体先插入</strong>）</li>
+</ul></li>
+<li>用户定义完整性约束（user-defined integrity constraint）
+<ul>
+<li>用户定义完整性约束则是用户根据具体的数据库应用场景，设置的具体的约束条件，用户定义完整性约束可以反映数据的特殊语义要求。</li>
+<li>例如，在Student关系中，假设学校在录取学生的时候明确表明每位学生都必要有姓名和年龄信息，则Student关系中的Sname和Sage属性均不能取空值。</li>
+</ul></li>
+</ul>
+<p><strong>其它约束</strong></p>
+<ul>
+<li>非空约束
+<ul>
+<li>指关系中某一属性的取值不能为空值。</li>
+<li>例如，如果对Student关系中的Sage属性增加了非空约束，则在增加一个新的学生元组的时候，其Sage属性必须要有一个非空的取值，否则数据库系统将会报错。</li>
+</ul></li>
+<li>唯一约束
+<ul>
+<li>指关系中某一属性的取值不能重复的约束。</li>
+<li>例如给Student关系中的Sdept属性加上唯一约束后，则表明学生的系别<u>不能重复出现</u>。</li>
+<li>唯一约束与主键约束都可以保证关系中某一属性的取值不会重复出现。</li>
+<li>不同的是，主键约束只能作用于一个关系中的一个属性且该属性的取值不能为空值，而唯一约束可以作用于一个关系中的多个属性，且该属性的取值可以为空值但不能重复。</li>
+</ul></li>
+<li>自增长约束
+<ul>
+<li>一个关系中的属性取值自增长</li>
+</ul></li>
+<li>默认值约束
+<ul>
+<li>一个关系中的属性的取值为默认值，例如默认值为NULL或者0</li>
+</ul></li>
+<li>检查约束
+<ul>
+<li>指一个关系中的属性的取值必须满足一个指定条件的约束</li>
+<li>例如，在Student关系中，Sage属性的取值范围是大于等于0</li>
+</ul></li>
+<li>域约束</li>
+</ul>
+<h1 id="chap6.1-关系代数">Chap6.1 关系代数</h1>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114163808151.png" /></p>
+<p>关系代数是一种<strong>过程化查询</strong>语言。</p>
+<p>它包括一个运算的集合，这些运算以一个或两个关系为输入，产生一个新的关系作为结果。</p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114164003770.png" /></p>
+<ul>
+<li>选择（𝜎）、投影（Π）、并（∪）、差（−）、笛卡尔积（×）、重命名（𝜌）是六种基本的关系代数运算</li>
+<li>另外，交（∩）、连接（⋈）、赋值（←）、除（÷）是由基本关系代数运算组合得到的附加关系代数运算，因此这四种运算并不增加关系代数的表达能力</li>
+<li>扩展关系代数运算可以实现一些使用基本关系代数运算和附加关系代数运算无法实现的功能，包括去重（𝛿）、广义投影（Π）、聚集（𝒢）、分组（𝒢）、排序（𝜏）等</li>
+</ul>
+<h2 id="基本运算">6.1.1 基本运算</h2>
+<ul>
+<li>选择</li>
+<li>投影</li>
+<li>并</li>
+<li>集合差</li>
+<li>笛卡儿积</li>
+<li>重命名</li>
+</ul>
+<h3 id="选择sigma">选择<span class="math inline">\(\sigma\)</span></h3>
+<p><img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114164800456.png" alt="image-20231114164800456" style="zoom: 33%;" /></p>
+<ul>
+<li>p 为选择谓词
+<ul>
+<li>p是由逻辑运算符与（⋀）、或（∨）、非（¬）连接的若干原子表达式构成的公式</li>
+<li>原子表达式的形式为：X θ Y
+<ul>
+<li>X，Y：属性名、常量，或者函数值</li>
+<li>θ：比较运算符，包括=、&gt;、&lt;、≥、≤、≠</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>例如：<span
+class="math inline">\(\sigma_{salary&gt;90,000}(instructor)\)</span></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919105413710.png" /></p>
+<h3 id="投影pi">投影<span class="math inline">\(\Pi\)</span></h3>
+<p><img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114165142047.png" alt="image-20231114165142047" style="zoom:33%;" /></p>
+<ul>
+<li>A<sub>1</sub>,A<sub>2</sub>,…,A<sub>k</sub>为R中的属性列</li>
+<li>返回R中元组在A_1,A_2,…,A_k列上的值</li>
+<li>因为关系是一个几何，所以删除重复元组（重复行）</li>
+</ul>
+<p>例如：查询计算机系所有学生的学号、姓名。 <span
+class="math display">\[
+\Pi_{Sno,Sname}(\sigma_{Sdept=&quot;CS&quot;}(Student))
+\]</span></p>
+<h3 id="并cup">并<span class="math inline">\(\cup\)</span></h3>
+<p><img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114165840211.png" alt="image-20231114165840211" style="zoom:25%;" /></p>
+<ul>
+<li>R和S中属性个数要相同</li>
+<li>R和S中的属性应存在一一对应关系</li>
+<li>R中每个属性的域和S中对应属性的域要相同</li>
+</ul>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919105824480.png" /></p>
+<h3 id="差-">差<span class="math inline">\(-\)</span></h3>
+<p><img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114170014708.png" alt="image-20231114170014708" style="zoom:25%;" /></p>
+<ul>
+<li>R和S中属性个数要相同</li>
+<li>R和S中的属性应存在一一对应关系</li>
+<li>R中每个属性的域和S中对应属性的域要相同</li>
+<li>r-s ：在r中但不在s中的元组</li>
+</ul>
+<h3 id="笛卡儿积-times">笛卡儿积 <span
+class="math inline">\(\times\)</span></h3>
+<p><img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114170131942.png" alt="image-20231114170131942" style="zoom:25%;" /></p>
+<ul>
+<li>(t,q)为R中元组t和S中元组q拼接在一起得到的元组</li>
+<li>R×S中有|R|×|S|个元组</li>
+</ul>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919110036717-1695092437309-4.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114170244112.png" /></p>
+<h3 id="重命名rho">重命名<span class="math inline">\(\rho\)</span></h3>
+<p>重命名运算（ρ）将关系R重命名为关系S：</p>
+<p><span class="math display">\[
+\rho_{S(A_1,A_2,A_3,\cdots,A_n)}(R)
+\]</span> - 同时将各属性按照从左到右的顺序重命名为A_1,A_2,…,A_n</p>
+<ul>
+<li><span class="math inline">\(ρ_S
+(R)\)</span>：只修改关系名，不修改属性名</li>
+</ul>
+<p>例如，如果有一个关系$ Students(StudID, StudName, StudAge) <span
+class="math inline">\(，你可以使用重命名操作来将属性名修改为\)</span>
+ID, Name, Age $：</p>
+<p>$ _{(ID, Name, Age)}(Students) $这将产生一个具有属性 ( ID, Name, Age
+) 的新关系，而不改变原始关系。</p>
+<h2 id="关系代数的形式化定义">6.1.2 关系代数的形式化定义</h2>
+<h2 id="附加的关系代数运算">6.1.3 附加的关系代数运算</h2>
+<ul>
+<li>交</li>
+<li>连接</li>
+<li>赋值</li>
+<li>除</li>
+</ul>
+<h3 id="交cap">交<span class="math inline">\(\cap\)</span></h3>
+<p><img src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114170850251.png" alt="image-20231114170850251" style="zoom:25%;" /></p>
+<ul>
+<li>R和S中属性个数要相同</li>
+<li>R和S中的属性应存在一一对应关系</li>
+<li>R中每个属性的域和S中对应属性的域要相同</li>
+</ul>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919110345066-1695092626052-6.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919110401859.png" /></p>
+<h3 id="连接bowtie">连接<span
+class="math inline">\(\bowtie\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919110545827.png" /></p>
+<ul>
+<li>外连接</li>
+<li>左外连接</li>
+<li>友外连接</li>
+<li>全外连接</li>
+</ul>
+<h3 id="赋值leftarrow">赋值<span
+class="math inline">\(\leftarrow\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919111534768.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114231607090.png" /></p>
+<h3 id="除div">除<span class="math inline">\(\div\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114232742826.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114232830926.png" /></p>
+<h2 id="扩展的关系代数运算">6.1.4 扩展的关系代数运算</h2>
+<ul>
+<li>去重</li>
+<li>广义投影</li>
+<li>聚集</li>
+<li>分组</li>
+<li>排序</li>
+</ul>
+<h3 id="去重delta">去重<span class="math inline">\(\delta\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114233352969.png" /></p>
+<h3 id="广义投影pi">广义投影<span
+class="math inline">\(\Pi\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919111818522.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114233834173.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114234028355.png" /></p>
+<h3 id="聚集mathcalg">聚集<span
+class="math inline">\(\mathcal{G}\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20230919112251597.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114235148086.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114235201426.png" /></p>
+<h3 id="分组mathcalg_count_distinct">分组<span
+class="math inline">\(\mathcal{G}_{count\_distinct}\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114235343569.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231114235716771.png" /></p>
+<h3 id="排序tau">排序<span class="math inline">\(\tau\)</span></h3>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231115000721477.png" /></p>
+<p><img
+src="./images/Chap2关系模型+Chap6关系代数.assets/image-20231115001438088.png" /></p>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2023/11/20/%E6%95%B0%E6%8D%AE%E5%BA%93Chap3%20SQL%E6%A6%82%E8%BF%B0/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>未命名</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/11/20/%E6%95%B0%E6%8D%AE%E5%BA%93Chap5%20%E9%AB%98%E7%BA%A7SQL/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      未命名
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://microdaniel.github.io/">Daniel</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg" />
+                  <a class="foot-link"
+                     href="mailto:singforeal@163.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/sinsinsing">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-bilibili.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://space.bilibili.com/356307646">哔哩哔哩</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-xhs.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5b6ea92be85cb900013df89f">小红书</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg" />
+                <a class="foot-link" href="mailto:singforeal@163.com">singforeal@163.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">Space | sinG</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+      <script src="https://unpkg.com/js-polyfills@0.1.43/es6.js"></script>
+      <script id="MathJax-script"
+              async
+              src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    
+    
+  
+
+  </body>
+</html>

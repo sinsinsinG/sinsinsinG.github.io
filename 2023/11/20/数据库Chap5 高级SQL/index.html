@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+         | Space | sinG
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/life">LIFE</a>
+            
+              <a class="nav-menu-item" href="/math">MATH</a>
+            
+              <a class="nav-menu-item" href="/cs">CS</a>
+            
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">未命名</div>
+        <div class="post-info">
+          
+  
+
+
+          <span class="post-date">2023-11-20</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <p>[toc]</p>
+<h2 id="存储过程和函数">存储过程和函数</h2>
+<ul>
+<li>存储过程和函数是事先经过编译并存储在数据库中的一段SQL语句的集合</li>
+<li>存储过程和函数可以对一段代码进行封装，以便日后调用</li>
+<li>数据库中创建存储过程的语句为<code>CREATE PROCEDURE</code>，并通过CALL语句加存储过程名来调用存储过程</li>
+<li>数据库中创建函数的语句为<code>CREATE FUNCTION</code>，并通过函数名来调用函数</li>
+</ul>
+<h3 id="创建和调用存储过程">创建和调用存储过程</h3>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116103304938.png"
+alt="image-20231116103304938" />
+<figcaption aria-hidden="true">image-20231116103304938</figcaption>
+</figure>
+<p>【例4.75】创建名为PROC_COURSE_GRADE的存储过程，输出某门课程的学生成绩。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><span class="hljs-keyword">CREATE</span> PROCRDURE PROC_COURSE_GRADE(<span class="hljs-keyword">IN</span> course_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">4</span>))<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">WHERE</span> Cno<span class="hljs-operator">=</span>course_id;<br><span class="hljs-keyword">END</span><span class="hljs-operator">/</span><span class="hljs-operator">/</span><br>DELIMITER ;<br>CALL_PROC_COURSE_GRADE(&quot;1&quot;); #调用，查询<span class="hljs-number">1</span>号课程的学生成绩<br></code></pre></td></tr></table></figure>
+<p>第一条会将数据库的终止符修改为//，<u>因为数据库的默认终止符为分号，为了避免与存储过程中SQL语句块中的终止符（即分号）冲突</u>，需要先使用DELIMITER语句来修改终止符，并以“END
+//”结束存储过程</p>
+<p>在调用已创建的存储过程时，需要先将数据库的终止符恢复为默认的分号，然后使用CALL语句调用存储过程。查询1号课程的学生成绩</p>
+<p>【例4.76】创建名为PROC_COURSE_AVG_GRADE的存储过程，计算某门课程的平均学生成绩，并将结果存储在某个变量中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><span class="hljs-keyword">CREATE</span> PROCRDURE PROC_COURSE_AVG_GRADE(<span class="hljs-keyword">IN</span> course_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">4</span>),<span class="hljs-keyword">OUT</span> avg_grade <span class="hljs-type">FLOAT</span>)<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(GRADE) <span class="hljs-keyword">INTO</span> avg_grade <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">WHERE</span> Cno<span class="hljs-operator">=</span>course_id;<br><span class="hljs-keyword">END</span><span class="hljs-operator">/</span><span class="hljs-operator">/</span><br>DELIMITER ;<br>CALL_PROC_COURSE_AVG_GRADE(&quot;1&quot;,<span class="hljs-variable">@avg_grade</span>); #调用，结果存储在avg_grade变量中<br><span class="hljs-keyword">SELECT</span> <span class="hljs-variable">@avg_grade</span>;# 查询变量值<br></code></pre></td></tr></table></figure>
+<p>调用PROC_COURSE_AVG_GRADE存储过程，查询1号课程的平均学生成绩，并将结果存储在avg_grade变量中</p>
+<h3 id="创建和调用存储函数">创建和调用存储函数</h3>
+<p>创建函数的语法格式为：Returns返回数据类型；Return返回数据值</p>
+<ul>
+<li>参数的格式与存储过程相似，但是只能是IN参数</li>
+<li>RETURNS语句指定函数返回数据的类型</li>
+</ul>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116105132048.png"
+alt="image-20231116105132048" />
+<figcaption aria-hidden="true">image-20231116105132048</figcaption>
+</figure>
+<p>【例4.77】创建函数，返回某名学生选修的某门课程的成绩。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> FUNC_STU_COU_GRADE(student_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">10</span>),course_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">4</span>))<br><span class="hljs-keyword">RETURNS</span> <span class="hljs-type">INT</span><br><span class="hljs-keyword">RETURN</span> (<span class="hljs-keyword">SELECT</span> Grade <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">WHERE</span> Sno<span class="hljs-operator">=</span>student_id <span class="hljs-keyword">AND</span> Cno<span class="hljs-operator">=</span>course_id);<br><span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><br>DELIMITER ;<br><span class="hljs-keyword">SELECT</span> FUNC_STU_COU_GRADE(&quot;2021310722&quot;,&quot;1&quot;);<br></code></pre></td></tr></table></figure>
+<p>调用FUNC_STU_COU_GRADE函数，查询学号2021310722的学生的1号课程成绩。</p>
+<h3 id="存储过程和函数的区别">存储过程和函数的区别</h3>
+<ul>
+<li>返回值
+<ul>
+<li>存储过程可以通过OUT或INOUT参数返回多个值</li>
+<li>函数只能返回RETURNS子句中指定的某一类型的单值或表对象。</li>
+</ul></li>
+<li>参数
+<ul>
+<li>存储过程的参数可以为IN、OUT或INOUT</li>
+<li>函数的参数只能是IN类型的。</li>
+</ul></li>
+<li>调用
+<ul>
+<li>存储过程可以通过CALL语句作为一个独立的部分来调用和执行</li>
+<li>函数可以作为查询语句的一部分来调用。另外，由于函数可以返回表对象，因此函数的返回结果也可以用在查询语句的FROM子句中。</li>
+</ul></li>
+<li>创建函数时必须指定返回值数据类型，且函数体内必须有一个RETURNS语句。</li>
+<li>存储过程中可以执行<strong>更新表</strong>的数据库操作，而函数则不可以。</li>
+</ul>
+<h3 id="变量和流程控制">变量和流程控制</h3>
+<ul>
+<li>在SQL<strong>存储过程</strong>和<strong>函数</strong>中也存在变量和流程控制的概念，从而实现一些复杂的功能</li>
+<li>变量：可以在存储过程和函数中声明并使用变量</li>
+<li>流程控制：可以用来改变存储过程和函数内部语句的执行顺序。包括IF语句、LOOP语句、WHILE语句、REPEAT语句、LEAVE语句等。</li>
+</ul>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116111309283.png"
+alt="image-20231116111309283" />
+<figcaption aria-hidden="true">image-20231116111309283</figcaption>
+</figure>
+<h3 id="变量">变量</h3>
+<p>作用范围是在BEGIN…END语句块中</p>
+<p><strong>变量定义：</strong></p>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116111753719.png"
+alt="image-20231116111753719" />
+<figcaption aria-hidden="true">image-20231116111753719</figcaption>
+</figure>
+<ul>
+<li>变量名（列表）指定了定义的变量的名称</li>
+<li>数据类型定义了这些变量的数据类型</li>
+<li>当指定DEFAULT选项时，默认值为这些变量提供了一个默认值。如果未指定DEFAULT选项，变量的初始值为NULL</li>
+</ul>
+<p><strong>变量赋值：</strong></p>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116111831470.png"
+alt="image-20231116111831470" />
+<figcaption aria-hidden="true">image-20231116111831470</figcaption>
+</figure>
+<h3 id="流程控制">流程控制</h3>
+<h4 id="if">if</h4>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116111919044.png"
+alt="image-20231116111919044" />
+<figcaption aria-hidden="true">image-20231116111919044</figcaption>
+</figure>
+<p>【例4.78】创建一个名为FUNC_GRADE_LEVEL的成绩等级评定函数，参数为学生学号与课程号，返回值为学生该门课程的成绩等级，包括：A[90-100），B[80-90），C[70-80），D[60-70），E（60以下）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> FUNC_GRADE_LEVEL(student_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">10</span>)， course_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">4</span>))<br><span class="hljs-keyword">RETURNS</span> <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">5</span>)<br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">DECLARE</span> level <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">DEFAULT</span> &quot;E&quot;;<br><span class="hljs-keyword">DECLARE</span> grade <span class="hljs-type">INT</span>;<br><span class="hljs-keyword">SET</span> grade<span class="hljs-operator">=</span>(<span class="hljs-keyword">SELECT</span> Grade <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">WHERE</span> Sno<span class="hljs-operator">=</span>student_id <span class="hljs-keyword">AND</span> Cno<span class="hljs-operator">=</span>course_id);<br>IF grade<span class="hljs-operator">&gt;=</span><span class="hljs-number">90</span> <span class="hljs-keyword">THEN</span> <span class="hljs-keyword">SET</span> level<span class="hljs-operator">=</span>&quot;A”;<br>ELSEIF grade&lt;90 AND grade&gt;=80 THEN SET level=&quot;B&quot;;<br>ELSEIF grade&lt;80 AND grade&gt;=70 THEN SET evel=&quot;c&quot;;<br>ELSEIF grade&lt;70 AND grade&gt;=60 THEN SET level=&quot;D&quot;;<br>ELSE SET level=&quot;E&quot;;<br>END IF;<br>RETURN level;<br>END //<br><br>#调用FUNC_GRADE_LEVEL函数，查询学号2021310722的学生的1号课程成绩。<br>DELIMITER ;<br>SELECT FUNC_GRADE_LEVEL(&quot;<span class="hljs-number">2021310722</span>&quot;,&quot;<span class="hljs-number">1</span>&quot;);<br></code></pre></td></tr></table></figure>
+<h4 id="loop">loop</h4>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116112619152.png"
+alt="image-20231116112619152" />
+<figcaption aria-hidden="true">image-20231116112619152</figcaption>
+</figure>
+<ul>
+<li>程序执行时，会重复执行LOOP后的语句块，直到循环被退出。</li>
+<li>在LOOP语句中，使用<strong>LEAVE</strong>子句可跳出循环。</li>
+<li>LOOP语句中<strong>必须包含LEAVE子句</strong>，否则会陷入死循环。</li>
+<li><strong>标签可以用来标志一个LOOP语句，为可选项。</strong></li>
+</ul>
+<p>【例4.79】创建一个名为FUNC_SUM的函数，参数为num，计算1+2+…+(num-1)+num的结果。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> FUNC <span class="hljs-built_in">SUM</span>(num <span class="hljs-type">INT</span>)<br><span class="hljs-keyword">RETURNS</span> <span class="hljs-type">INT</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">DECLARE</span> total <span class="hljs-type">INT</span> <span class="hljs-keyword">DEFAULT</span> O;<br><br>sum_loop: LOOP<br><span class="hljs-keyword">SET</span> total<span class="hljs-operator">=</span>total<span class="hljs-operator">+</span>num;<br><span class="hljs-keyword">SET</span> num<span class="hljs-operator">=</span>num<span class="hljs-number">-1</span>;<br>IF num<span class="hljs-operator">&lt;=</span><span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span> LEAVE sum_loop;<br><span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> LOOP sum_loop;<br><br><span class="hljs-keyword">RETURN</span> total;<br><span class="hljs-keyword">END</span> <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><br>#调用FUNC_SUM函数，参数为<span class="hljs-number">10</span>。<br><br>DELIMITER ;<br><span class="hljs-keyword">SELECT</span> FUNC_SUM(<span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure>
+<h4 id="while">while</h4>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116113004885.png"
+alt="image-20231116113004885" />
+<figcaption aria-hidden="true">image-20231116113004885</figcaption>
+</figure>
+<p>【例4.80】创建一个名为FUNC_SUM2的函数，参数为num，计算1+2+…+(num-1)+num的结果。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> FUNC_SUM2(num <span class="hljs-type">INT</span>)<br><span class="hljs-keyword">RETURNS</span> <span class="hljs-type">INT</span><br><span class="hljs-keyword">BEGIN</span><br><span class="hljs-keyword">DECLARE</span> total <span class="hljs-type">INT</span> <span class="hljs-keyword">DEFAULT</span> O;<br>WHILE num<span class="hljs-operator">&gt;</span><span class="hljs-number">0</span><br>DO <span class="hljs-keyword">SET</span> total<span class="hljs-operator">=</span>total<span class="hljs-operator">+</span>num, num<span class="hljs-operator">=</span>num<span class="hljs-number">-1</span>;<br><span class="hljs-keyword">END</span> WHILE;<br><span class="hljs-keyword">RETURN</span> total;<br><span class="hljs-keyword">END</span> <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><br># 调用FUNC_SUM2函数，参数为<span class="hljs-number">10</span>。<br>DELIMITER ;<br><span class="hljs-keyword">SELECT</span> FUNC_SUM2(<span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="删除drop存储过程和函数">删除<code>drop</code>存储过程和函数</h3>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116113147444.png"
+alt="image-20231116113147444" />
+<figcaption aria-hidden="true">image-20231116113147444</figcaption>
+</figure>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116113150971.png"
+alt="image-20231116113150971" />
+<figcaption aria-hidden="true">image-20231116113150971</figcaption>
+</figure>
+<h2 id="触发器">触发器</h2>
+<ul>
+<li>触发器是与表相关的特殊的存储过程，在满足特定条件时，它会被触发执行</li>
+<li>触发器是定义在基本表上的，<strong>当基本表被修改</strong>（比如插入、删除、更新数据）时，会<strong>激活定义在其上的触发器</strong>，该基本表称为触发器的目标表</li>
+<li>触发器可以用来保证数据库的完整性</li>
+</ul>
+<h4 id="创建触发器">创建触发器</h4>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116113601565.png"
+alt="image-20231116113601565" />
+<figcaption aria-hidden="true">image-20231116113601565</figcaption>
+</figure>
+<p>SQL中创建触发器的命令是<code>CREATE TRIGGER</code>：</p>
+<ul>
+<li>触发器名：指定要创建的触发器的名字</li>
+<li>触发时机：指定了触发执行的时间，可以为BEFORE（触发事件之前）或AFTER（触发事件之后）</li>
+<li>触发事件：指定了当发生何种事件时，触发器会被激活。包括INSERT、DELETE、UPDATE</li>
+<li>表名：指定了触发器是在哪张表上创建的</li>
+<li>触发动作体：触发事件发生后要执行的SQL语句块
+<ul>
+<li>对于触发事件作用的每一行（FOR EACH ROW），会执行触发动作体</li>
+<li>对于触发事件作用的每一行，在触发事件发生之前该行称之为OLD，在触发事件发生之后该行称之为NEW</li>
+<li>可以使用OLD和NEW来访问触发事件发生前后的元组的值</li>
+</ul></li>
+</ul>
+<p>【例4.81】创建一个名为TRI_PRO_STU的触发器，在每次对学生成绩进行更新时，判断该学生成绩是否提升，如果提升，将该学生学号存入Progressive_Student(Sno)中；否则，将该学生学号存入表Regressive_Student(Sno)中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql">DELIMITER <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> TRI_PRO_STU<br>AFTER <span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">OF</span> Grade <span class="hljs-keyword">ON</span> SC<br><span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-type">ROW</span><br><span class="hljs-keyword">BEGIN</span><br>IF NEW.Grade<span class="hljs-operator">&gt;</span>OLD.Grade <span class="hljs-keyword">THEN</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Progressive_Student <span class="hljs-keyword">VALUES</span> (NEW.Sno);<br><span class="hljs-keyword">ELSE</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Regressive_Student <span class="hljs-keyword">VALUES</span>(NEW.Sno);<br><span class="hljs-keyword">END</span> IF;<br><span class="hljs-keyword">END</span> <span class="hljs-operator">/</span><span class="hljs-operator">/</span><br>DELIMITER ;<br></code></pre></td></tr></table></figure>
+<h4 id="删除触发器">删除触发器</h4>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116114028178.png"
+alt="image-20231116114028178" />
+<figcaption aria-hidden="true">image-20231116114028178</figcaption>
+</figure>
+<h2 id="使用程序设计语言访问数据库">使用程序设计语言访问数据库</h2>
+<ul>
+<li>嵌入式SQL（Embedded
+SQL，ESQL）是<strong>将SQL语句嵌入到程序设计语言中</strong>
+<ul>
+<li>被嵌入的程序设计语言称为宿主语言，如C、C++、Java等</li>
+<li>通过调用宿主语言中可以用来访问数据库的包或库，可以达到使用嵌入式SQL来访问数据库的目的</li>
+</ul></li>
+<li>JDBC： Java Database Connectivity，Java数据库连接
+<ul>
+<li>JDBC提供Java程序访问数据库的标准接口，Java应用程序可以基于JDBC访问不同类型的数据库。</li>
+</ul></li>
+<li>ODBC： Open Database Connectivity，开放数据库连接
+<ul>
+<li>有统一的访问数据库的接口，并为不同的数据库系统实现了相应的ODBC驱动程序。</li>
+</ul></li>
+</ul>
+<h3 id="嵌入式sql">嵌入式SQL</h3>
+<ul>
+<li>嵌入式SQL连接数据库：<code>EXEC SQL CONNECT TO 数据库名字AS连接名字 USER用户名;</code></li>
+<li>嵌入式SQL断开连接：<code>EXEC SQL DISCONNECT 连接名字;</code>或<code>EXEC SQL DISCONNECT CURRENT;</code></li>
+<li>嵌入式SQL提交与撤销：
+<ul>
+<li>执行提交语法为 <code>EXEC SQL COMMIT WORK；</code></li>
+<li>执行撤消语法为 <code>EXEC SQL ROOLBACK WORK;</code></li>
+<li>直接提交或者撤销后断开连接，即<code>EXEC SQL COMMIT RELEASE;</code>和
+<code>EXEC SQL ROOLBACK RELEASE;</code>。</li>
+</ul></li>
+<li>嵌入式SQL查询：嵌入式SQL可以将SQL查询结果赋值给高级语言的变量。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">EXEC</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">BEGIN</span> <span class="hljs-keyword">DECLARE</span> SECTION; <span class="hljs-operator">/</span><span class="hljs-operator">/</span>开始声明<br><span class="hljs-type">char</span> cSname[<span class="hljs-number">10</span>], queryName[<span class="hljs-number">10</span>]<span class="hljs-operator">=</span>“李博”; <span class="hljs-type">int</span> cSage; <span class="hljs-operator">/</span><span class="hljs-operator">/</span>声明变量<br><span class="hljs-keyword">EXEC</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">END</span> <span class="hljs-keyword">DECLARE</span> SECTION; <span class="hljs-operator">/</span><span class="hljs-operator">/</span>结束声明<br><span class="hljs-keyword">EXEC</span> <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">SELECT</span> Sname, Sage <span class="hljs-keyword">INTO</span> :cSname, :cSage <span class="hljs-keyword">FROM</span> Student <span class="hljs-keyword">WHERE</span> Sname <span class="hljs-operator">=</span> :queryName ; 定义的变量可以输入给<span class="hljs-keyword">SQL</span>（例如queryName），也可以从<span class="hljs-keyword">SQL</span>获取值（例如cSName和cSage）。<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116115602638.png"
+alt="image-20231116115602638" />
+<figcaption aria-hidden="true">image-20231116115602638</figcaption>
+</figure>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116115617245.png"
+alt="image-20231116115617245" />
+<figcaption aria-hidden="true">image-20231116115617245</figcaption>
+</figure>
+<h3 id="jdbc-java数据库连接">JDBC Java数据库连接</h3>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116115821624.png"
+alt="image-20231116115821624" />
+<figcaption aria-hidden="true">image-20231116115821624</figcaption>
+</figure>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116115830189.png"
+alt="image-20231116115830189" />
+<figcaption aria-hidden="true">image-20231116115830189</figcaption>
+</figure>
+<h3 id="odbc-开放数据库连接">ODBC 开放数据库连接</h3>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116115856503.png"
+alt="image-20231116115856503" />
+<figcaption aria-hidden="true">image-20231116115856503</figcaption>
+</figure>
+<figure>
+<img src="./Chap5%20高级SQL.assets/image-20231116115904876.png"
+alt="image-20231116115904876" />
+<figcaption aria-hidden="true">image-20231116115904876</figcaption>
+</figure>
+<h2 id="事务控制">事务控制</h2>
+<ul>
+<li>开始事务：START TRANSACTION</li>
+<li>提交事务：COMMIT</li>
+<li>回滚事务：ROLLBACK/ABORT</li>
+<li>在事务内部设置回滚标记点: SAVEPOINT sp_name</li>
+<li>删除回滚标记点: RELEASE SAVEPOINT</li>
+<li>将事务回滚到标记点: ROLLBACK TO sp_name</li>
+</ul>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2023/11/20/%E6%95%B0%E6%8D%AE%E5%BA%93Chap2%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B+Chap6%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>数据库Chap2关系模型+Chap6关系代数</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/09/13/Chap1%20introduction/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      计算机网络Chap1 introduction
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://microdaniel.github.io/">Daniel</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg" />
+                  <a class="foot-link"
+                     href="mailto:singforeal@163.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/sinsinsing">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-bilibili.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://space.bilibili.com/356307646">哔哩哔哩</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-xhs.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5b6ea92be85cb900013df89f">小红书</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg" />
+                <a class="foot-link" href="mailto:singforeal@163.com">singforeal@163.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">Space | sinG</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+      <script src="https://unpkg.com/js-polyfills@0.1.43/es6.js"></script>
+      <script id="MathJax-script"
+              async
+              src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    
+    
+  
+
+  </body>
+</html>
