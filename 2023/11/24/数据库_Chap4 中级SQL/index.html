@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        数据库Chap4 中级SQL | Space | sinG
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css" />
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/life">LIFE</a>
+            
+              <a class="nav-menu-item" href="/math">MATH</a>
+            
+              <a class="nav-menu-item" href="/cs">CS</a>
+            
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner--toc">
+      <div class="post-content__head">
+        <div class="post-title">数据库Chap4 中级SQL</div>
+        <div class="post-info">
+          
+  <a href="/tags/sql/" class="post-tag">#sql</a>
+
+
+          <span class="post-date">2023-11-24</span>
+        </div>
+      </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="post-toc-text">连接表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#join"><span class="post-toc-text">join</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">外连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="post-toc-text">视图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="post-toc-text">创建视图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%86%E5%9B%BE%E5%B1%95%E5%BC%80"><span class="post-toc-text">视图展开</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%89%A9%E5%8C%96%E8%A7%86%E5%9B%BE"><span class="post-toc-text">物化视图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0"><span class="post-toc-text">视图更新</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E8%A7%86%E5%9B%BE"><span class="post-toc-text">修改视图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E8%A7%86%E5%9B%BE"><span class="post-toc-text">删除视图</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="post-toc-text">事务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="post-toc-text">完整性约束</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%95%E4%B8%AA%E5%85%B3%E7%B3%BB%E4%B8%8A%E7%9A%84%E7%BA%A6%E6%9D%9F"><span class="post-toc-text">单个关系上的约束</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#not-null-%E7%BA%A6%E6%9D%9F-%E5%92%8C-unique-%E7%BA%A6%E6%9D%9F"><span class="post-toc-text">not null 约束 和 unique 约束</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#checkp"><span class="post-toc-text">check(P)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="post-toc-text">参照完整性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8B%E5%8A%A1%E4%B8%AD%E5%AF%B9%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E7%9A%84%E8%BF%9D%E5%8F%8D"><span class="post-toc-text">事务中对完整性约束的违反</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%8D%E6%9D%82check%E6%9D%A1%E4%BB%B6%E4%B8%8E%E6%96%AD%E8%A8%80"><span class="post-toc-text">复杂check条件与断言</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sql%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">SQL的数据类型与模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sql%E4%B8%AD%E7%9A%84%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">SQL中的日期和时间类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2cast"><span class="post-toc-text">类型转换cast</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%BB%98%E8%AE%A4%E5%80%BCdefault"><span class="post-toc-text">默认值default</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="post-toc-text">索引</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="post-toc-text">创建索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="post-toc-text">修改、删除索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%A7%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">大对象类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">用户定义的类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%9F%E5%92%8C%E5%B1%9E%E6%80%A7%E5%9F%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8D%E5%90%8C"><span class="post-toc-text">域（！和属性域的概念不同）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#create-table%E7%9A%84%E6%89%A9%E5%B1%95"><span class="post-toc-text">create table的扩展</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A8%A1%E5%BC%8F%E7%9B%AE%E5%BD%95%E4%B8%8E%E7%8E%AF%E5%A2%83"><span class="post-toc-text">模式、目录与环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8E%88%E6%9D%83"><span class="post-toc-text">授权</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9D%83%E9%99%90%E7%9A%84%E6%8E%88%E4%BA%88grant%E4%B8%8E%E6%94%B6%E5%9B%9Erevoke"><span class="post-toc-text">权限的授予grant与收回revoke</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%92%E8%89%B2"><span class="post-toc-text">角色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E6%8E%88%E6%9D%83"><span class="post-toc-text">视图的授权</span></a></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <p><strong>目录：</strong></p>
+<ul>
+<li><a href="#连接表达式">连接表达式</a>
+<ul>
+<li><a href="#join"><code>join</code></a></li>
+<li><a href="#外连接">外连接</a></li>
+</ul></li>
+<li><a href="#视图">视图</a>
+<ul>
+<li><a href="#创建视图">创建视图</a></li>
+<li><a href="#视图展开">视图展开</a></li>
+<li><a href="#物化视图">物化视图</a></li>
+<li><a href="#视图更新">视图更新</a></li>
+<li><a href="#修改视图">修改视图</a></li>
+<li><a href="#删除视图">删除视图</a></li>
+</ul></li>
+<li><a href="#事务">事务</a></li>
+<li><a href="#完整性约束">完整性约束</a>
+<ul>
+<li><a href="#单个关系上的约束">单个关系上的约束</a></li>
+<li><a href="#not-null-约束-和-unique-约束">not null 约束 和 unique
+约束</a></li>
+<li><a href="#checkp"><code>check(P)</code></a></li>
+<li><a href="#参照完整性">参照完整性</a></li>
+<li><a
+href="#事务中对完整性约束的违反">事务中对完整性约束的违反</a></li>
+<li><a href="#复杂check条件与断言">复杂check条件与断言</a></li>
+</ul></li>
+<li><a href="#sql的数据类型与模式">SQL的数据类型与模式</a>
+<ul>
+<li><a href="#sql中的日期和时间类型">SQL中的日期和时间类型</a></li>
+<li><a href="#类型转换cast">类型转换<code>cast</code></a></li>
+<li><a href="#默认值default">默认值<code>default</code></a></li>
+<li><a href="#索引">索引</a>
+<ul>
+<li><a href="#创建索引">创建索引</a></li>
+<li><a href="#修改删除索引">修改、删除索引</a></li>
+</ul></li>
+<li><a href="#大对象类型">大对象类型</a></li>
+<li><a href="#用户定义的类型">用户定义的类型</a></li>
+<li><a href="#域和属性域的概念不同">域（！和属性域的概念不同）</a></li>
+<li><a href="#create-table的扩展">create table的扩展</a></li>
+<li><a href="#模式目录与环境">模式、目录与环境</a></li>
+</ul></li>
+<li><a href="#授权">授权</a>
+<ul>
+<li><a
+href="#权限的授予grant与收回revoke">权限的授予<code>grant</code>与收回<code>revoke</code></a></li>
+<li><a href="#角色">角色</a></li>
+<li><a href="#视图的授权">视图的授权</a></li>
+</ul></li>
+</ul>
+<h2 id="连接表达式">连接表达式</h2>
+<h3 id="join"><code>join</code></h3>
+<p>一个连接操作是两个关系中的某些元组在符合某些条件下相匹配的笛卡尔积，同时还指定了连接结果中出现的属性有哪些</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student <span class="hljs-keyword">join</span> takes <span class="hljs-keyword">on</span> student.ID <span class="hljs-operator">=</span> takes.ID;<br>与<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> student,takes<br><span class="hljs-keyword">where</span> student.ID <span class="hljs-operator">=</span> takes.ID<br>查询等价<br></code></pre></td></tr></table></figure>
+<p><code>select * from student natural join takes</code></p>
+<h3 id="外连接">外连接</h3>
+<p>外连接过程：先执行连接操作，然后将两个关系中<strong>不匹配的元组</strong>都<strong>加入到最后的结果关系</strong>中，并使用<strong><em>null</em></strong>
+作为属性值补全，从而保留了在连接中丢失的元组</p>
+<p>内连接（Inner
+Join）：我们此前学的不保留未匹配元组的连接运算，连接操作默认为内连接</p>
+<ul>
+<li>左外连接(<code>left outer join</code>)只保留出现在左外连接运算之前(左边)的关系中的元组</li>
+<li>右外连接(<code>right outer join</code>)只保留出现在右外连接运算之后(右边)的关系中的元组。</li>
+<li>全外连接(<code>full outer join</code>)保留出现在两个关系中的元组。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> ID<br><span class="hljs-keyword">from</span> student <span class="hljs-keyword">natural</span> <span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> takes<br><span class="hljs-keyword">where</span> course_id <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span>;<br><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> takes <span class="hljs-keyword">natural</span> <span class="hljs-keyword">right</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> student;<br></code></pre></td></tr></table></figure>
+<h2 id="视图">视图</h2>
+<p><strong>视图</strong> 提供了向用户隐藏特定数据的机制</p>
+<h3 id="创建视图">创建视图</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> <span class="hljs-operator">&lt;</span>视图名<span class="hljs-operator">&gt;</span>(<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>,<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>) <span class="hljs-keyword">as</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">SQL</span>语句<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>在执行CREATE
+VIEW语句时并不执行其中的子查询语句，只是把视图的定义存入数据字典。</li>
+<li>在建立完视图后，就可以像对表一样对视图进行查询了。</li>
+<li>只有在对视图进行查询时，才会按照视图的定义去查询数据。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> faculty <span class="hljs-keyword">as</span><br><span class="hljs-keyword">select</span> ID,name,dept_name<br><span class="hljs-keyword">from</span> instructor;<br></code></pre></td></tr></table></figure>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115182404146.png" /></p>
+<ul>
+<li>"departments_total_salary" 是视图的名称。</li>
+<li>"(dept_name, total_salary)" 告诉数据库系统，在创建名为
+"departments_total_salary" 的视图时，这个视图将包含两列，分别命名为
+"dept_name" 和 "total_salary"。</li>
+</ul>
+<p>一个视图可能被用到定义另一个视图的表达式中</p>
+<ul>
+<li>如果视图v2 用于v1 的定义中，我们称 <strong>v1 直接依赖
+v2</strong></li>
+<li>如果v1 直接依赖v2 或者<u>从v1 到 v2 有一条依赖路径</u>，我们称v1依赖
+v2</li>
+<li>如果一个视图v<strong>依赖其自身</strong>，我们称该视图v是<strong>递归</strong>的</li>
+</ul>
+<h3 id="视图展开">视图展开</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115183425174.png" /></p>
+<h3 id="物化视图">物化视图</h3>
+<p>物化视图：如果用于定义视图的实际关系改变，视图也会跟着修改。</p>
+<p>物化视图维护：保持物化视图一直在最新状态的过程。</p>
+<p>物化视图，说白了，<strong>就是物理表</strong>，只不过这张表<strong>通过oracle的内部机制可以定期更新，将一些大的耗时的表连接用物化视图实现，会提高查询的效率</strong>。</p>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115183618665.png" /></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> MATERIALIZED <span class="hljs-keyword">VIEW</span> <span class="hljs-operator">&lt;</span>物化视图名<span class="hljs-operator">&gt;</span> [<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>,...,<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>] <span class="hljs-keyword">AS</span> <span class="hljs-operator">&lt;</span>子查询<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="视图更新">视图更新</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115183659872.png" /></p>
+<ul>
+<li>一般情况下，不允许对视图关系进行更新update（insert、delete）</li>
+<li>如果定义视图的查询语句对下列条件<strong>都能满足</strong>，我们称SQL视图是<strong>可更新的</strong>：
+<ul>
+<li>from子句只有一个关系；</li>
+<li>select子句只包含关系的属性名，不包含任何表达式、聚集函数或distinct声明；</li>
+<li>任何没有出现在select子句中的属性内容允许取空值；</li>
+<li>查询中不包含group by或者having子句</li>
+</ul></li>
+</ul>
+<p>可在视图定义加入<code>with check option</code>子句，用于<strong>拒绝不满足视图的where子句条件的元组更新、插入</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span>  <span class="hljs-keyword">view</span>  history_instructors  <span class="hljs-keyword">as</span><br><span class="hljs-keyword">select</span>    <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span>     instructor<br><span class="hljs-keyword">where</span>   dept_name<span class="hljs-operator">=</span> ’History’<br><span class="hljs-keyword">with</span> <span class="hljs-keyword">check</span> option; <br></code></pre></td></tr></table></figure>
+<p><code>with check option</code>：(检查视图更新SQL语句是否满足视图定义中的where子句)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span>  history_instructors  <span class="hljs-keyword">set</span> salary<span class="hljs-operator">=</span><span class="hljs-number">80000</span><br><span class="hljs-keyword">where</span> ID<span class="hljs-operator">=</span> ’<span class="hljs-number">25566</span>’;<br># 转换为<br><span class="hljs-keyword">update</span>  instructors  <span class="hljs-keyword">set</span>  salary<span class="hljs-operator">=</span><span class="hljs-number">80000</span><br><span class="hljs-keyword">where</span> ID<span class="hljs-operator">=</span> ’<span class="hljs-number">25566</span>’ <span class="hljs-keyword">and</span>  dept_name<span class="hljs-operator">=</span> ’History’;<br>##################<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span>   history_instructors (ID, name, salary) <br>            <span class="hljs-keyword">values</span> (’<span class="hljs-number">69987</span>’, ’White’,  <span class="hljs-number">80000</span>);<br># 转换为<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> instructors (ID, name, salary, dept_name) <br>            <span class="hljs-keyword">values</span> (’<span class="hljs-number">69987</span>’, ’White’, ‘<span class="hljs-number">80000</span>’, ‘History’);<br></code></pre></td></tr></table></figure>
+<h3 id="修改视图">修改视图</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">VIEW</span> <span class="hljs-operator">&lt;</span>视图名<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">AS</span> <span class="hljs-operator">&lt;</span>子查询<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="删除视图">删除视图</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">VIEW</span> <span class="hljs-operator">&lt;</span>视图名<span class="hljs-operator">&gt;</span> [CASCADE];<br></code></pre></td></tr></table></figure>
+<p><code>CASCADE</code>：该视图和由该视图导出的视图都会被删除</p>
+<h2 id="事务">事务</h2>
+<ul>
+<li>事务transaction由查询和（或）更新语句的序列组成。</li>
+<li>当一条SQL语句被执行，就隐式的开始了一个事务</li>
+<li>以<code>commit</code>或<code>rollback</code>结束一个事务
+<ul>
+<li><code>commit [work]</code>：提交当前事务，将该事务所做的更新在数据库中持久保存。事务被提交后，一个新的事务自动开始</li>
+<li><code>rollback [work]</code>：回滚当前事务，撤销该事务中所有SQL语句对数据库的更新</li>
+</ul></li>
+</ul>
+<p>事务具有ACID特性</p>
+<ul>
+<li>原子性
+<ul>
+<li>事务里的所有操作要么全部做完，要么都不做，事务成功的条件是事务里的所有操作都成功，只要有一个操作失败，整个事务就失败，需要回滚。</li>
+</ul></li>
+<li>一致性
+<ul>
+<li>数据库要一直处于一致的状态，事务开始前是一个一致状态，事务结束后是另一个一致状态，事务将数据库从一个一致状态转移到另一个一致状态。</li>
+</ul></li>
+<li>隔离性
+<ul>
+<li>并发的事务之间不会互相影响。换句话说，一个事务的影响在该事务提交前对其它事务是不可见的。</li>
+</ul></li>
+<li>持久性
+<ul>
+<li>一旦事务提交后，它所做的修改将会永久的保存在数据库上，即使出现宕机也不会丢失。</li>
+</ul></li>
+</ul>
+<h2 id="完整性约束">完整性约束</h2>
+<p>防止的是对数据的意外破坏，它保证授权用户对数据库所做的修改不会破坏数据的一致性</p>
+<p>在已有表中增加约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">table</span><span class="hljs-operator">-</span>name <span class="hljs-keyword">add</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">constraint</span><span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="单个关系上的约束">单个关系上的约束</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115190834940.png" /></p>
+<h3 id="not-null-约束-和-unique-约束">not null 约束 和 unique 约束</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115190959394.png" /></p>
+<h3 id="checkp"><code>check(P)</code></h3>
+<p><strong>check</strong> (P)，使得关系中每个元组都必须满足谓词P</p>
+<p>P 可以是包括子查询在内的任意谓词，但实现开销较大</p>
+<p>例如: 确保semester是fall, winter, spring, summer中的一个：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> section (<br>    course_id  <span class="hljs-type">varchar</span> (<span class="hljs-number">8</span>),<br>    sec_id  <span class="hljs-type">varchar</span> (<span class="hljs-number">8</span>),<br>    semester  <span class="hljs-type">varchar</span> (<span class="hljs-number">6</span>),<br>    <span class="hljs-keyword">year</span>  <span class="hljs-type">numeric</span> (<span class="hljs-number">4</span>,<span class="hljs-number">0</span>),<br>    building   <span class="hljs-type">varchar</span> (<span class="hljs-number">15</span>),<br>    room_number   <span class="hljs-type">varchar</span> (<span class="hljs-number">7</span>),<br>    time_slot_id   <span class="hljs-type">varchar</span> (<span class="hljs-number">4</span>), <br>    <span class="hljs-keyword">primary</span> key (course_id, sec_id, semester, <span class="hljs-keyword">year</span>),<br>    <span class="hljs-keyword">check</span> (semester <span class="hljs-keyword">in</span> (’Fall’, ’Winter’, ’Spring’, ’Summer’))<br>);<br></code></pre></td></tr></table></figure>
+<h3 id="参照完整性">参照完整性</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115192050440.png" /></p>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115192124477.png" /></p>
+<ol type="1">
+<li>ON DELETE
+CASCADE：当主表中的记录被删除时，相关联的从表中的行也会被自动删除。这意味着如果删除主表中的某个记录，则从表中具有相应外键的所有行也会被删除。</li>
+<li>ON UPDATE
+CASCADE：当主表中的记录被更新时，相关联的从表中的外键值也会被自动更新。这意味着如果在主表中更新了某个记录的主键值，从表中具有相应外键的行的外键值也会相应地更新。</li>
+</ol>
+<h3 id="事务中对完整性约束的违反">事务中对完整性约束的违反</h3>
+<p>如何在不违反完整性约束的情况下插入一个元组?</p>
+<ul>
+<li>先将配偶信息设为null，在插入配偶元组后再更新该配偶信息（当配偶信息设为not
+null 时，该操作不可行）</li>
+<li></li>
+<li>推迟完整性约束检查到事务结束时进行
+<ul>
+<li>在约束声明后加 initially deferred;</li>
+<li>或者对约束条件加入语句<code>set constraints &lt;constraint-list&gt; deferred;</code></li>
+</ul></li>
+</ul>
+<h3 id="复杂check条件与断言">复杂check条件与断言</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115195018283.png" /></p>
+<p><strong>断言</strong>就是一个谓词，它表达了我们希望数据库总能满足的一个条件；</p>
+<p><strong>属性域约束和参照完整性约束是断言的特殊形式</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> assertion <span class="hljs-operator">&lt;</span>assertion<span class="hljs-operator">-</span>name<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">check</span> <span class="hljs-operator">&lt;</span>predicate<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+<p>示例：对于student关系中的每个元组，它在属性tot_cred上的取值必须等于该生所成功修完课程的学分总和
+(p78)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> assertion credits_earned_constraint <span class="hljs-keyword">check</span> <br>	(<span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> <br>         (<span class="hljs-keyword">select</span> ID <span class="hljs-keyword">from</span> student<br>                   <span class="hljs-keyword">where</span> tot_cred <span class="hljs-operator">&lt;&gt;</span> <br>                     (<span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(credits)<br>                        <span class="hljs-keyword">from</span> takes <span class="hljs-keyword">natural</span> <span class="hljs-keyword">join</span> course<br>                        <span class="hljs-keyword">where</span> student.ID <span class="hljs-operator">=</span> takes.ID<br>                        <span class="hljs-keyword">and</span> grade <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <br>                        <span class="hljs-keyword">and</span> grade <span class="hljs-operator">&lt;&gt;</span> ‘F’<br>                     )<br>         )<br>    );<br></code></pre></td></tr></table></figure>
+<h2 id="sql的数据类型与模式">SQL的数据类型与模式</h2>
+<h3 id="sql中的日期和时间类型">SQL中的日期和时间类型</h3>
+<ul>
+<li><code>date</code>: 日历日期，包括年（四位）、月和日
+<ul>
+<li>举例: date ‘2014-01-01’</li>
+</ul></li>
+<li><code>time</code>: 一天中的时间，包括小时、分和秒
+<ul>
+<li>举例: time ‘09:00:30’ time(2) ‘09:00:30.75’</li>
+</ul></li>
+<li><code>timestamp</code>: date 和 time的组合
+<ul>
+<li>举例: timestamp(2) ‘2014-7-27 09:00:30.75’</li>
+</ul></li>
+<li><code>interval</code>: 一段时间
+<ul>
+<li>举例: interval ‘1’ day</li>
+</ul></li>
+<li>SQL允许对上述<strong>日期时间类型</strong>进行<strong>算术运算</strong>和<strong>比较运算</strong>
+<ul>
+<li>一个date/time/timestamp的值减去另一个date/time/timestamp值，得到一个<strong>interval</strong>类型的值</li>
+<li>interval类型的值可以加date/time/timestamp类型的值上</li>
+</ul></li>
+</ul>
+<h3 id="类型转换cast">类型转换<code>cast</code></h3>
+<p>使用<code>cast(expression as type)</code>表达式：表示将表达式e转换为类型t</p>
+<p>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">cast</span>(ID <span class="hljs-keyword">as</span> <span class="hljs-type">numeric</span>(<span class="hljs-number">5</span>)) <span class="hljs-keyword">as</span> inst_id<br><span class="hljs-keyword">from</span> instructor<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> inst_id;<br></code></pre></td></tr></table></figure>
+<p>使用<code>coalesce()</code>函数<strong>解决输出空值</strong>的情况:</p>
+<p>该函数接收任意数量的参数（所有参数必须是相同类型），并返回第一个<strong>非空</strong>参数</p>
+<p>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> ID, <span class="hljs-built_in">coalesce</span>(salary, <span class="hljs-number">0</span>) <span class="hljs-keyword">as</span> salary<br><span class="hljs-keyword">from</span> instructor;<br></code></pre></td></tr></table></figure>
+<h3 id="默认值default">默认值<code>default</code></h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> student (<br>    ID            <span class="hljs-type">varchar</span>(<span class="hljs-number">5</span>),<br>    name          <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    dept_name     <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>),<br>    tot_cred      <span class="hljs-type">numeric</span>(<span class="hljs-number">3</span>,<span class="hljs-number">0</span>)  <span class="hljs-keyword">default</span> <span class="hljs-number">0</span>,<br>    <span class="hljs-keyword">primary</span> key (ID),<br>    <span class="hljs-keyword">foreign</span> key (dept_name) <span class="hljs-keyword">references</span> department);<br><br><span class="hljs-keyword">insert</span>  <span class="hljs-keyword">into</span> student(ID, name, dept_name)<br>	<span class="hljs-keyword">values</span> (’<span class="hljs-number">3003</span>’, ’Green’, ’Finance’);<br></code></pre></td></tr></table></figure>
+<h3 id="索引">索引</h3>
+<p>索引的优点</p>
+<ul>
+<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</li>
+<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
+</ul>
+<p>索引的缺点</p>
+<ul>
+<li>时间方面：创建索引和维护索引要耗费时间，具体地，当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，会降低增/改/删的执行效率；</li>
+<li>空间方面：索引需要占物理空间。</li>
+</ul>
+<h4 id="创建索引">创建索引</h4>
+<p>在关系的属性上所创建的索引是一种数据结构（例如B+树），它允许数据库系统高效地找到关系中那些在索引属性上取给定值的元组。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">UNIQUE</span>] [CLUSTER] INDEX <span class="hljs-operator">&lt;</span>索引名<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">ON</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> (<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>[<span class="hljs-operator">&lt;</span>次序<span class="hljs-operator">&gt;</span>] , <span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>[<span class="hljs-operator">&lt;</span>次序<span class="hljs-operator">&gt;</span>],...,<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>[<span class="hljs-operator">&lt;</span>次序<span class="hljs-operator">&gt;</span>]);<br></code></pre></td></tr></table></figure>
+<p>在ON子句中指定的一列或多列上建立索引，还可以指定某列索引值的排列次序</p>
+<ul>
+<li>表名、索引名：要建索引的表的名字、要建索引的名字</li>
+<li>次序：ASC（升序）或DESC（降序）</li>
+<li><code>UNIQUE</code>：此索引列的值必须唯一</li>
+<li><code>CLUSTER</code>：此索引是聚集/聚簇索引（有关索引的内容见第9章）</li>
+</ul>
+<p>【例】：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> index studentID_index <span class="hljs-keyword">on</span> student(ID);<br><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <br><span class="hljs-keyword">from</span> student<br><span class="hljs-keyword">where</span> ID <span class="hljs-operator">=</span> ‘<span class="hljs-number">12345</span>’；<br></code></pre></td></tr></table></figure>
+<p>不用读取student关系中的所有元组，可以直接找有指定ID‘12345’的这条记录。</p>
+<p>【例4.9】在学生表的Sno属性上建立<strong>聚集索引</strong>，命名为Sno_index，并说明Sno属性满足唯一约束，索引按照Sno的值递增排序。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">UNIQUE</span> CLUSTER INDEX Sno_index <span class="hljs-keyword">ON</span> Student (Sno <span class="hljs-keyword">ASC</span>);<br></code></pre></td></tr></table></figure>
+<p>【例4.10】在学生选课表的Sno和Cno属性上建立唯一索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">UNIQUE</span> INDEX Sno_Cno_index <span class="hljs-keyword">ON</span> SC (Sno,Cno);<br></code></pre></td></tr></table></figure>
+<h4 id="修改删除索引">修改、删除索引</h4>
+<p><strong>索引重命名：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> INDEX <span class="hljs-operator">&lt;</span>OLD_NAME<span class="hljs-operator">&gt;</span> RENAME <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span>NEW_NAME<span class="hljs-operator">&gt;</span>;<br><br># 将学生表的Sno_index重命名为Sno_ind<br><span class="hljs-keyword">ALTER</span> INDEX Sno_index RENAME <span class="hljs-keyword">TO</span> Sno_ind;<br></code></pre></td></tr></table></figure>
+<p><strong>删除索引：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> INDEX<span class="hljs-operator">&lt;</span>索引名<span class="hljs-operator">&gt;</span>;<br><br># 删除学生表的Sno_index索引<br><span class="hljs-keyword">DROP</span> INDEX Sno_index;<br></code></pre></td></tr></table></figure>
+<h3 id="大对象类型">大对象类型</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115214521016.png" /></p>
+<h3 id="用户定义的类型">用户定义的类型</h3>
+<p><code>create type</code> 构造于SQL中，创建用户自定义类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> type Dollars <span class="hljs-keyword">as</span> <span class="hljs-type">numeric</span> (<span class="hljs-number">12</span>,<span class="hljs-number">2</span>) <span class="hljs-keyword">final</span>； <br></code></pre></td></tr></table></figure>
+<p>Notes: final无实际意义 (p80)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> department<br> ( dept_name <span class="hljs-type">varchar</span> (<span class="hljs-number">20</span>),<br>  building <span class="hljs-type">varchar</span> (<span class="hljs-number">15</span>),<br>  budget  Dollars );<br></code></pre></td></tr></table></figure>
+<p>类似于C语言中的typedef</p>
+<p>强制类型转换<code>cast (department.budget as numeric(12,2) );</code></p>
+<p><code>drop type Dollars</code> 删除用户自定义类型</p>
+<p><code>alter type Dollars</code>修改用户自定义类型</p>
+<h3 id="域和属性域的概念不同">域（！和属性域的概念不同）</h3>
+<ol type="1">
+<li><code>create domain</code> 构造于SQL-92中，创建用户自定义域类型</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> domain person_name <span class="hljs-type">char</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>；<br></code></pre></td></tr></table></figure>
+<p>用户自定义域和用户自定义类型有两大区别（p80）</p>
+<ol start="2" type="1">
+<li><p>域可以有约束或默认值：</p>
+<ul>
+<li><p>例如not null</p></li>
+<li><p>在域上应用check子句约束</p></li>
+</ul></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> domain degree_level <span class="hljs-type">varchar</span>(<span class="hljs-number">10</span>)<br>  <span class="hljs-keyword">constraint</span>  degree_level_test<br>  <span class="hljs-keyword">check</span>(<span class="hljs-keyword">value</span> <span class="hljs-keyword">in</span>(‘Bachelors’, ’Masters ’, ’Doctorate’));<br></code></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>域不是强类型。基本类型相容的一个域类型的值可以被赋给另一个域类型</li>
+</ol>
+<h3 id="create-table的扩展">create table的扩展</h3>
+<p>创建与现有某个表模式相同的表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> temp_instructor <span class="hljs-keyword">like</span> instructor；<br></code></pre></td></tr></table></figure>
+<p>SQL:2003</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> tl <span class="hljs-keyword">as</span><br>    <span class="hljs-keyword">select</span>  <span class="hljs-operator">*</span> <br>    <span class="hljs-keyword">from</span> instructor<br>    <span class="hljs-keyword">where</span> dept_name <span class="hljs-operator">=</span> ‘Music’<br>    [<span class="hljs-keyword">with</span> data];<br></code></pre></td></tr></table></figure>
+<p>SQL:2003标准：省略with data，创建表，但是不载入数据</p>
+<p>但实际上，很多数据库还是默认载入数据</p>
+<h3 id="模式目录与环境">模式、目录与环境</h3>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115220318725.png" /></p>
+<h2 id="授权">授权</h2>
+<p>对数据库用户在某些数据上的权限形式：</p>
+<ul>
+<li>Select – 允许读取，但不允许修改数据</li>
+<li>Insert – 允许插入新数据，但不允许修改已存在的数据</li>
+<li>Update – 允许修改数据，但不允许删除数据</li>
+<li>Delete – 允许删除数据</li>
+</ul>
+<p>修改数据库模式的权限类型：</p>
+<ul>
+<li>Index – 允许创建和删除索引</li>
+<li>Resources – 允许创建新的关系</li>
+<li>Alteration – 允许添加或删除关系中的属性</li>
+<li>Drop – 允许删除关系</li>
+</ul>
+<p>最高权限：数据库管理员，类似于Linux root用户</p>
+<h3
+id="权限的授予grant与收回revoke">权限的授予<code>grant</code>与收回<code>revoke</code></h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> <span class="hljs-operator">&lt;</span>权限列表<span class="hljs-operator">&gt;</span><br>        <span class="hljs-keyword">on</span> <span class="hljs-operator">&lt;</span>关系名或视图名<span class="hljs-operator">&gt;</span> <br>        <span class="hljs-keyword">to</span> <span class="hljs-operator">&lt;</span>用户<span class="hljs-operator">/</span>角色列表<span class="hljs-operator">&gt;</span><br>        [<span class="hljs-keyword">with</span>  <span class="hljs-keyword">grant</span>  option];<br></code></pre></td></tr></table></figure>
+<p><用户/角色列表> 是：</p>
+<ul>
+<li>用户ID</li>
+<li><strong>public</strong>, 当前和将来所有有效用户</li>
+<li>角色</li>
+</ul>
+<p>对视图的授权并不代表对视图相关的实际关系的授权</p>
+<p>权限授予人必须已经具有对指定项目的权限（或者是数据库管理员）</p>
+<p><strong>权限：</strong></p>
+<ul>
+<li>select: 允许读取关系，或者使用视图完成查询的权限</li>
+<li>insert: 插入元组的权限，可指定属性列</li>
+<li>update: 使用SQL update语句更新的权限，可指定属性列</li>
+<li>delete: 删除元组的权限</li>
+<li>all: 允许所有权限</li>
+</ul>
+<p><strong>权限的授予：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> instructor  <span class="hljs-keyword">to</span>  U1, U2, U3;<br><br><span class="hljs-keyword">grant</span> <span class="hljs-keyword">update</span>(salary) <span class="hljs-keyword">on</span> instructor <span class="hljs-keyword">to</span>  U1, U2, U3;<br><br><span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span>  <span class="hljs-keyword">on</span> instructor  <span class="hljs-keyword">to</span>  U1, U2, U3;<br><br><span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> instructor, student  <span class="hljs-keyword">to</span>  public;<br><br><span class="hljs-keyword">grant</span> <span class="hljs-keyword">insert</span> (ID)  <span class="hljs-keyword">on</span> instructor <span class="hljs-keyword">to</span>  U4 <span class="hljs-keyword">with</span>  <span class="hljs-keyword">grant</span>  option;<br></code></pre></td></tr></table></figure>
+<p><code>with  grant  option</code>允许用户 U4
+将这个权限授予给其他用户（即使用 grant option）</p>
+<p><img
+src="/images/Chap4%20中级SQL.assets/image-20231115223806902.png" /></p>
+<p><strong>权限的收回：</strong></p>
+<p>revoke语句用来收回权</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">revoke</span> <span class="hljs-operator">&lt;</span>权限列表<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">on</span> <span class="hljs-operator">&lt;</span>关系名或视图名<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>用户<span class="hljs-operator">/</span>角色列表<span class="hljs-operator">&gt;</span><br>[ restrict <span class="hljs-operator">|</span> cascade ];<br></code></pre></td></tr></table></figure>
+<p><权限列表> 可能是all，收回被收回用户所持有的所有权限</p>
+<p><用户列表> 是public,
+（除了那些隐含授权的用户）其他用户的权限将都被收回</p>
+<ul>
+<li>CASCADE：支持级联收回，即由这些用户授予了以上权限的用户的这些权限也会被收回（默认选项）</li>
+<li>RESTRICT：不支持级联收回</li>
+</ul>
+<p>默认<strong>级联收回权限（cascade）</strong>，restrict可用于避免一些不合适的权限级联收回</p>
+<ul>
+<li>如果你想要撤销一个用户对某个对象的权限，并且希望同时撤销该用户将这个权限授予其他用户的能力，可以使用级联收回权限。</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">revoke</span> <span class="hljs-keyword">update</span> （budget） <span class="hljs-keyword">on</span> department <span class="hljs-keyword">from</span> U1, U2, U3;<br><br><span class="hljs-keyword">revoke</span> <span class="hljs-keyword">grant</span> option <span class="hljs-keyword">for</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> department <span class="hljs-keyword">from</span> U1, U2, U3;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>如果某些权限被不同的授权者授予同一个用户两次，那么在一次权限回收后该用户可能仍保有这个权限</li>
+<li>一个权限被回收后，基于这一权限的其他权限（如视图）也将被回收</li>
+</ul>
+<p><img src="/images/Chap4 中级SQL.assets/image-20231115225128071.png" alt="image-20231115225128071" style="zoom:33%;" /></p>
+<h3 id="角色">角色</h3>
+<p>权限可以被授予给角色:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> takes <span class="hljs-keyword">to</span> instructor;<br></code></pre></td></tr></table></figure>
+<p>角色可以被授予给用户，同时也可以被授予给其他角色</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> instructor <span class="hljs-keyword">to</span> Amit;#角色授予给用户<br><br><span class="hljs-keyword">create</span> role teaching_assistant;# 创建角色<br><br><span class="hljs-keyword">grant</span> teaching_assistant <span class="hljs-keyword">to</span> instructor;# 角色授予给角色<br></code></pre></td></tr></table></figure>
+<p>Instructor 具有teaching_assistant 的所有权限</p>
+<p>角色链</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> role dean;<br><br><span class="hljs-keyword">grant</span> instructor <span class="hljs-keyword">to</span> dean;<br><br><span class="hljs-keyword">grant</span> dean <span class="hljs-keyword">to</span> Satoshi;<br></code></pre></td></tr></table></figure>
+<p>SQL允许权限由一个<strong>角色</strong>授予（p86）</p>
+<p>[granted by current_role]</p>
+<h3 id="视图的授权">视图的授权</h3>
+<p>大学地理系工作人员的视图授权示例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> geo_instructor <span class="hljs-keyword">as</span><br> ( <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br>  <span class="hljs-keyword">from</span> instructor<br>  <span class="hljs-keyword">where</span> dept_name <span class="hljs-operator">=</span> ’Geology’);<br><br><span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> geo_instructor <span class="hljs-keyword">to</span> geo_staff ;<br></code></pre></td></tr></table></figure>
+<p>一个geo_staff 成员的查询操作可以写为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> geo_instructor ;<br></code></pre></td></tr></table></figure>
+<p>SQL提供了references权限，允许用户在创建关系时声明外码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">references</span> (dept_name) <span class="hljs-keyword">on</span> department <br><span class="hljs-keyword">to</span> Mariano;<br></code></pre></td></tr></table></figure>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <div class="post-nav-item-left"></div>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/11/24/%E6%95%B0%E6%8D%AE%E5%BA%93_Chap3%20SQL%E6%A6%82%E8%BF%B0/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      数据库Chap3 SQL概述
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/icon/icon-link.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://microdaniel.github.io/">Daniel</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link" height="20px" width="20px" src="/images/icon/icon-link+.svg" />
+                  <a class="foot-link"
+                     href="mailto:singforeal@163.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/sinsinsing">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-bilibili.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://space.bilibili.com/356307646">哔哩哔哩</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-xhs.svg" />
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5b6ea92be85cb900013df89f">小红书</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link" height="20px" width="20px" src="/images/icon/icon-email.svg" />
+                <a class="foot-link" href="mailto:singforeal@163.com">singforeal@163.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="http://example.com">Space | sinG</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+      <script src="https://unpkg.com/js-polyfills@0.1.43/es6.js"></script>
+      <script id="MathJax-script"
+              async
+              src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    
+    
+  
+
+  </body>
+</html>
