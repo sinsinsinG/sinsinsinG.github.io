@@ -1,0 +1,25 @@
+# Blender MTL File: 'Couch William 302.blend'
+# Material Count: 2
+
+newmtl Fabric_Couch
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ks -s 4.000000 4.000000 1.000000 ./FabricUpholsteryMossPlainWeave001_COL_VAR3_1K.jpg
+
+newmtl Metal
+Ns 575.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.037410 0.037410 0.037410
+Ks 0.900000 0.900000 0.900000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump ./Metal032_2K_Normal.jpg
+refl ./Metal032_2K_Metalness.jpg
