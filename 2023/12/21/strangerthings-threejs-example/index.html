@@ -39,7 +39,12 @@
     var material2 = new THREE.MeshLambertMaterial({
       color: 0x8B4513
     });
-
+    const textureLoader_wall = new THREE.TextureLoader();
+    const wallpicture = textureLoader_wall.load('./wall.jpg');
+    material.map=wallpicture;
+    const textureLoader_floor = new THREE.TextureLoader();
+    const floorpicture = textureLoader_floor.load('./floor.jpg');
+    material2.map=floorpicture;
     var mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
     mesh.position.set(0,135,0);
     var mesh2 = new THREE.Mesh(geometry_down, material2); //网格模型对象Mesh
@@ -62,7 +67,7 @@
     const textureLoader11 = new THREE.TextureLoader();
     const textureLoader111 = new THREE.TextureLoader();
     const sofapicture = textureLoader1.load('./sofa.jpg');
-    const backpicture = textureLoader11.load('./back.jpg');
+    const backpicture = textureLoader11.load('./sofa.jpg');
     const sidepicture = textureLoader111.load('./side.jpg');
     MTLLoader.load('./couch.mtl', function(materials) {
         // 返回一个包含材质的对象MaterialCreator
@@ -109,7 +114,7 @@
     var MTLLoader2 = new THREE.MTLLoader();//材质文件加载器
     const textureLoader2 = new THREE.TextureLoader();
     const textureLoader3 = new THREE.TextureLoader();
-    const picture = textureLoader2.load('./lily.jpg');
+    const picture = textureLoader2.load('./title.jpg');
     const frame = textureLoader3.load('./frame.jpg');
     MTLLoader2.load('./lily.mtl', function(materials) {
         // 返回一个包含材质的对象MaterialCreator
@@ -123,11 +128,8 @@
                 if (child instanceof THREE.Mesh) {
                   
                   if(child.name='DainTasker_Frame')
-                  {
                     child.material.map = frame;
-                    
-                  }
-                  if(child.name='DainTasker_Picture')
+                  else(child.name='DainTasker_Picture')
                     child.material.map = picture;
                     
                 }
@@ -175,10 +177,10 @@
     /**
      * alphabet
      */
-    const words = 'CLICK OR TYPE TO LIGHT';
-    const wordMaterial = new THREE.MeshBasicMaterial({ color: 0xFFD700 });
+    const words = 'WELCOME TO HAWKINS';
+    const wordMaterial = new THREE.MeshBasicMaterial({ color: 0xDC143C });
     var loader_letter2 = new THREE.FontLoader();
-    loader_letter2.load('./three.js-master/examples/fonts/optimer_regular.typeface.json', function (font) {
+    loader_letter2.load('./three.js-master/examples/fonts/gentilis_bold.typeface.json', function (font) {
       
         const letterGeometry = new THREE.TextGeometry(words, {
           font: font,
@@ -239,12 +241,12 @@
       }
     });
 
-    //bulb
-    var point = new THREE.PointLight(0xC0C0C0);//创建点光源，参数为光照强度
+    //光设置
+    var point = new THREE.PointLight(0x000000);//创建点光源，参数为光照强度
     point.position.set(400, 200, 300); //点光源位置
     scene.add(point); //点光源添加到场景中
     //环境光
-    var ambient = new THREE.AmbientLight(0x696969);
+    var ambient = new THREE.AmbientLight(0xffffff);
     scene.add(ambient);
     /**
      * 相机设置
@@ -255,7 +257,7 @@
     var s = 120; //取景范围，三维场景显示范围控制系数，系数越大，显示的范围越大
     //创建相机对象
     var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
-    camera.position.set(11, 85, 320); //设置相机位置
+    camera.position.set(11, 0, 320); //设置相机位置
     camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
     /**
      * 创建渲染器对象
